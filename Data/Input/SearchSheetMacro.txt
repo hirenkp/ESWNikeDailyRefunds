@@ -1,0 +1,59 @@
+Function SearchSheet(xlSheet As String, searchCriteria As Variant)
+    'rc - row count
+    rc = Sheets(xlSheet).Range("A1048576").End(xlUp).row
+    
+    'sa - searchArray
+    'sc - searchColumn
+    'vts - value to search
+    
+    Dim scr As Variant
+    scr = searchCriteria
+    sa = Split(scr(0), ":")
+    sc = sa(0)
+    isc = sc
+    vts = sa(1)
+    
+    Dim c As Range
+    Set c = Sheets(xlSheet).Range(sc & "1:" & sc & CStr(rc)).Find(what:=vts, LookIn:=xlValues, lookat:=xlWhole, searchorder:=xlByColumns, searchdirection:=xlNext, MatchCase:=False)
+    
+    If Not c Is Nothing Then
+        csr = c.row
+        If UBound(scr) > 1 Then
+            'remove the first item from the search criteria
+            For i = 1 To UBound(scr)
+                scr(i - 1) = scr(i)
+            Next i
+            ReDim Preserve scr(UBound(scr) - 1)
+            
+            'cell was found
+            Do Until c Is Nothing
+                csr = c.row
+                
+                'loop through remaining search criteria items and check values against selected row
+                'Dim remainingVlauesMatch As Boolean
+                rvm = True
+                For Each cr In scr
+                    sa = Split(cr, ":")
+                    sc = sa(0)
+                    vts = sa(1)
+                    
+                    Dim val As String
+                    val = CStr(Sheets(xlSheet).Range(sc & CStr(csr)).Value)
+                    If val <> vts Then
+                        rvm = False
+                        Set c = Sheets(xlSheet).Range(isc & "1:" & isc & CStr(rc)).FindNext(after:=c)
+                        Exit For
+                    End If
+                Next
+                
+                If rvm = True Then Set c = Nothing
+            Loop
+        End If
+    Else
+        'csr - current search row
+        csr = -1
+    End If
+    
+    
+    SearchSheet = csr
+End Function

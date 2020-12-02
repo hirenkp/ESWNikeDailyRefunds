@@ -1,0 +1,3 @@
+Public Sub ApplyCalculations(sheet As String, range As String)
+	Sheets(sheet).Range(range).Calculate         
+End Sub
