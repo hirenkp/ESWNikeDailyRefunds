@@ -5,11 +5,12 @@
     <x:Property Name="out_BusinessException" Type="OutArgument(ui:BusinessRuleException)" />
     <x:Property Name="out_SystemException" Type="OutArgument(s:Exception)" />
     <x:Property Name="in_MasterFileWorkbook" Type="InArgument(ui:WorkbookApplication)" />
+    <x:Property Name="in_TransactionAuditWorkbook" Type="InArgument(ui:WorkbookApplication)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1147,1086</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1208,986</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessRefunds_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -101,9 +102,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID15</x:Reference>
+      <x:Reference>__ReferenceID16</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID15">
+    <FlowStep x:Name="__ReferenceID16">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">350,127.5</av:Point>
@@ -117,7 +118,7 @@
         </ui:AddLogFields.Fields>
       </ui:AddLogFields>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID10">
+        <FlowStep x:Name="__ReferenceID11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">350,179.5</av:Point>
@@ -156,7 +157,7 @@
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
           <FlowStep.Next>
-            <FlowStep x:Name="__ReferenceID11">
+            <FlowStep x:Name="__ReferenceID12">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">350,259</av:Point>
@@ -172,7 +173,7 @@
                 </sap:WorkflowViewStateService.ViewState>
               </e:CSP_SearchFinancialTransactions>
               <FlowStep.Next>
-                <FlowDecision x:Name="__ReferenceID12" Condition="[Not dtTransactions Is Nothing]" DisplayName="Did search yeild transactions?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                <FlowDecision x:Name="__ReferenceID13" Condition="[Not dtTransactions Is Nothing]" DisplayName="Did search yeild transactions?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -182,7 +183,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <FlowDecision.True>
-                    <FlowStep x:Name="__ReferenceID9">
+                    <FlowStep x:Name="__ReferenceID10">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">60,318.5</av:Point>
@@ -190,7 +191,7 @@
                           <av:PointCollection x:Key="ConnectorLocation">160,501.5 160,551.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence sap2010:Annotation.AnnotationText="Append the rows extracted form the search results and apply formulas.&#xA;Once the formulas have been applied search specific columns for 'Fraud' or 'Bank Details Changed'" DisplayName="Append transactions and search for fraud" sap:VirtualizedContainerService.HintSize="421,413" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                      <Sequence sap2010:Annotation.AnnotationText="Append the rows extracted form the search results and apply formulas.&#xA;Once the formulas have been applied search specific columns for 'Fraud' or 'Bank Details Changed'" DisplayName="Append transactions and search for fraud" sap:VirtualizedContainerService.HintSize="200,183" sap2010:WorkflowViewState.IdRef="Sequence_1">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -199,54 +200,28 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_AppendRowsToSheet workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="RefundMaster\RMF_AppendRowsToSheetAndApplyFormulas.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Data">
-                              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtTransactions" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Sheet&quot;).ToString" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_ApplyFormulas">
-                              <Literal x:TypeArguments="x:Boolean" Value="True" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_FormulaRangeTemplate">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Formula Range Template&quot;).ToString()" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_RefundDateColumnTemplate">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Refund Date Column Template&quot;).ToString()" />
-                            </InArgument>
-                            <OutArgument x:TypeArguments="s:Int64[]" x:Key="out_NewlyAddedRowsRange">
-                              <mva:VisualBasicReference x:TypeArguments="s:Int64[]" ExpressionText="newlyAddedRowsRange" />
-                            </OutArgument>
-                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">
-                              <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="in_MasterFileWorkbook" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_MasterFile">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="string.Empty" />
-                            </InArgument>
+                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Data">[dtTransactions]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">[in_TransactionItem("Sheet").ToString]</InArgument>
+                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_ApplyFormulas">True</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FormulaRangeTemplate">[in_TransactionItem("Formula Range Template").ToString()]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RefundDateColumnTemplate">[in_TransactionItem("Refund Date Column Template").ToString()]</InArgument>
+                            <OutArgument x:TypeArguments="s:Int64[]" x:Key="out_NewlyAddedRowsRange">[newlyAddedRowsRange]</OutArgument>
+                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">[in_MasterFileWorkbook]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_MasterFile">[string.Empty]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_SearchForFraudulentTransactons workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="RefundMaster\RMF_SearchForFraudulentTransactons.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
-                              <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="in_TransactionItem" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_WorkbookApplication">
-                              <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="in_MasterFileWorkbook" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="s:Int64[]" x:Key="in_SearchRowRange">
-                              <mva:VisualBasicValue x:TypeArguments="s:Int64[]" ExpressionText="newlyAddedRowsRange" />
-                            </InArgument>
-                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToAuthorise">
-                              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtAuthoriseTransactions" />
-                            </OutArgument>
-                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToReject">
-                              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtRejectTransactions" />
-                            </OutArgument>
+                            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_WorkbookApplication">[in_MasterFileWorkbook]</InArgument>
+                            <InArgument x:TypeArguments="s:Int64[]" x:Key="in_SearchRowRange">[newlyAddedRowsRange]</InArgument>
+                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToAuthorise">[dtAuthoriseTransactions]</OutArgument>
+                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToReject">[dtRejectTransactions]</OutArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </Sequence>
                       <FlowStep.Next>
-                        <FlowStep x:Name="__ReferenceID13">
+                        <FlowStep x:Name="__ReferenceID14">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">60,551.5</av:Point>
@@ -266,13 +241,13 @@
                                 <av:Size x:Key="ShapeSize">60,75</av:Size>
                                 <av:PointCollection x:Key="ConnectorLocation">660,77.5 660,117.5</av:PointCollection>
                                 <x:Double x:Key="Width">864</x:Double>
-                                <x:Double x:Key="Height">676.63200000000006</x:Double>
+                                <x:Double x:Key="Height">770</x:Double>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <Flowchart.StartNode>
-                              <x:Reference>__ReferenceID8</x:Reference>
+                              <x:Reference>__ReferenceID9</x:Reference>
                             </Flowchart.StartNode>
-                            <FlowDecision x:Name="__ReferenceID8" Condition="[dtAuthoriseTransactions.Rows.Count &gt; 0]" DisplayName="Are there any to authorise" sap:VirtualizedContainerService.HintSize="142,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                            <FlowDecision x:Name="__ReferenceID9" Condition="[dtAuthoriseTransactions.Rows.Count &gt; 0]" DisplayName="Are there any to authorise" sap:VirtualizedContainerService.HintSize="142,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -341,7 +316,7 @@
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <av:Point x:Key="ShapeLocation">69,253.54</av:Point>
                                               <av:Size x:Key="ShapeSize">200,66</av:Size>
-                                              <av:PointCollection x:Key="ConnectorLocation">169,319.54 169,349.54 440,349.54 440,389</av:PointCollection>
+                                              <av:PointCollection x:Key="ConnectorLocation">169,319.54 169,349.54 440,349.54 440,414.5</av:PointCollection>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                           <Sequence DisplayName="Authorise transactions" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_3">
@@ -400,103 +375,145 @@
                                             <FlowStep x:Name="__ReferenceID1">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <av:Point x:Key="ShapeLocation">340,389</av:Point>
-                                                  <av:Size x:Key="ShapeSize">200,22</av:Size>
-                                                  <av:PointCollection x:Key="ConnectorLocation">440,411 440,451</av:PointCollection>
+                                                  <av:Point x:Key="ShapeLocation">340,414.5</av:Point>
+                                                  <av:Size x:Key="ShapeSize">200,51</av:Size>
+                                                  <av:PointCollection x:Key="ConnectorLocation">440,465.5 440,519</av:PointCollection>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_1" in_ActuallApproveTransactions="True" in_ApprovalType="Authorise" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtTransactions]" />
+                                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
+                                                <ui:InvokeWorkflowFile.Arguments>
+                                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">
+                                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtAuthoriseTransactions" />
+                                                  </InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">
+                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TransactionAuditFile&quot;).ToString()" />
+                                                  </InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_TransactionStatus">
+                                                    <Literal x:TypeArguments="x:String">Authorised</Literal>
+                                                  </InArgument>
+                                                </ui:InvokeWorkflowFile.Arguments>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </ui:InvokeWorkflowFile>
                                               <FlowStep.Next>
-                                                <FlowDecision x:Name="__ReferenceID6" Condition="[(dtRejectTransactions.Rows.Count &gt; 0) And (moreTransactionsToApprove = True)]" DisplayName="Any transactions to reject" sap:VirtualizedContainerService.HintSize="140,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                                                <FlowStep x:Name="__ReferenceID6">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      <av:Point x:Key="ShapeLocation">370,451</av:Point>
-                                                      <av:Size x:Key="ShapeSize">140,87</av:Size>
-                                                      <x:String x:Key="FalseLabel">No</x:String>
-                                                      <x:String x:Key="TrueLabel">Yes</x:String>
-                                                      <av:PointCollection x:Key="TrueConnector">370,494.5 270,494.5</av:PointCollection>
-                                                      <av:PointCollection x:Key="FalseConnector">510,494.5 530,494.5 530,550 440,550 440,580</av:PointCollection>
+                                                      <av:Point x:Key="ShapeLocation">340,519</av:Point>
+                                                      <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                                      <av:PointCollection x:Key="ConnectorLocation">440,541 440,581</av:PointCollection>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
-                                                  <FlowDecision.True>
-                                                    <FlowStep x:Name="__ReferenceID7">
+                                                  <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_1" in_ActuallApproveTransactions="True" in_ApprovalType="Authorise" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtTransactions]" />
+                                                  <FlowStep.Next>
+                                                    <FlowDecision x:Name="__ReferenceID7" Condition="[(dtRejectTransactions.Rows.Count &gt; 0) And (moreTransactionsToApprove = True)]" DisplayName="Any transactions to reject" sap:VirtualizedContainerService.HintSize="140,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <av:Point x:Key="ShapeLocation">70,461.5</av:Point>
-                                                          <av:Size x:Key="ShapeSize">200,66</av:Size>
-                                                          <av:PointCollection x:Key="ConnectorLocation">170,527.5 170,557.5 440,557.5 440,580</av:PointCollection>
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          <av:Point x:Key="ShapeLocation">370,581</av:Point>
+                                                          <av:Size x:Key="ShapeSize">140,87</av:Size>
+                                                          <x:String x:Key="FalseLabel">No</x:String>
+                                                          <x:String x:Key="TrueLabel">Yes</x:String>
+                                                          <av:PointCollection x:Key="TrueConnector">370,624.5 270,624.5</av:PointCollection>
+                                                          <av:PointCollection x:Key="FalseConnector">510,624.5 530,624.5 530,680 440,680 440,710</av:PointCollection>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
-                                                      <Sequence DisplayName="Reject transactions" sap:VirtualizedContainerService.HintSize="242,309" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                                                        <sap:WorkflowViewStateService.ViewState>
-                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                          </scg:Dictionary>
-                                                        </sap:WorkflowViewStateService.ViewState>
-                                                        <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Set the Selected value back to 1." DataTable="[dtRejectTransactions]" DisplayName="For Each Reject Row" sap:VirtualizedContainerService.HintSize="200,93" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
-                                                          <ui:ForEachRow.Body>
-                                                            <ActivityAction x:TypeArguments="sd:DataRow">
-                                                              <ActivityAction.Argument>
-                                                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-                                                              </ActivityAction.Argument>
-                                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                                                                <sap:WorkflowViewStateService.ViewState>
-                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                  </scg:Dictionary>
-                                                                </sap:WorkflowViewStateService.ViewState>
-                                                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-                                                                  <Assign.To>
-                                                                    <OutArgument x:TypeArguments="x:Object">[row("Selected")]</OutArgument>
-                                                                  </Assign.To>
-                                                                  <Assign.Value>
-                                                                    <InArgument x:TypeArguments="x:Object">[1]</InArgument>
-                                                                  </Assign.Value>
-                                                                </Assign>
-                                                              </Sequence>
-                                                            </ActivityAction>
-                                                          </ui:ForEachRow.Body>
+                                                      <FlowDecision.True>
+                                                        <FlowStep x:Name="__ReferenceID8">
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                              <av:Point x:Key="ShapeLocation">70,591.5</av:Point>
+                                                              <av:Size x:Key="ShapeSize">200,66</av:Size>
+                                                              <av:PointCollection x:Key="ConnectorLocation">170,657.5 170,687.5 440,687.5 440,710</av:PointCollection>
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
-                                                        </ui:ForEachRow>
-                                                        <e:CSP_SelectTransactionForProcessing in_SelectAllTransactions="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionForProcessing_4" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_TransactionStatuses="[dtRejectTransactions]" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]" />
-                                                        <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_2" in_ActuallApproveTransactions="True" in_ApprovalType="Reject" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtTransactions]" />
-                                                      </Sequence>
-                                                      <FlowStep.Next>
-                                                        <FlowStep x:Name="__ReferenceID0">
-                                                          <sap:WorkflowViewStateService.ViewState>
-                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                              <av:Point x:Key="ShapeLocation">309,580</av:Point>
-                                                              <av:Size x:Key="ShapeSize">262,60</av:Size>
-                                                            </scg:Dictionary>
-                                                          </sap:WorkflowViewStateService.ViewState>
-                                                          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-                                                            <Assign.To>
-                                                              <OutArgument x:TypeArguments="x:Int32">[loopIndex]</OutArgument>
-                                                            </Assign.To>
-                                                            <Assign.Value>
-                                                              <InArgument x:TypeArguments="x:Int32">[loopIndex + 1]</InArgument>
-                                                            </Assign.Value>
+                                                          <Sequence DisplayName="Reject transactions" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                               </scg:Dictionary>
                                                             </sap:WorkflowViewStateService.ViewState>
-                                                          </Assign>
+                                                            <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Set the Selected value back to 1." DataTable="[dtRejectTransactions]" DisplayName="For Each Reject Row" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                                                              <ui:ForEachRow.Body>
+                                                                <ActivityAction x:TypeArguments="sd:DataRow">
+                                                                  <ActivityAction.Argument>
+                                                                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                                                                  </ActivityAction.Argument>
+                                                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                      </scg:Dictionary>
+                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                                                                      <Assign.To>
+                                                                        <OutArgument x:TypeArguments="x:Object">[row("Selected")]</OutArgument>
+                                                                      </Assign.To>
+                                                                      <Assign.Value>
+                                                                        <InArgument x:TypeArguments="x:Object">[1]</InArgument>
+                                                                      </Assign.Value>
+                                                                    </Assign>
+                                                                  </Sequence>
+                                                                </ActivityAction>
+                                                              </ui:ForEachRow.Body>
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                            </ui:ForEachRow>
+                                                            <e:CSP_SelectTransactionForProcessing in_SelectAllTransactions="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionForProcessing_4" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_TransactionStatuses="[dtRejectTransactions]" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]" />
+                                                            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
+                                                              <ui:InvokeWorkflowFile.Arguments>
+                                                                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">
+                                                                  <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtRejectTransactions" />
+                                                                </InArgument>
+                                                                <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">
+                                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TransactionAuditFile&quot;).ToString()" />
+                                                                </InArgument>
+                                                                <InArgument x:TypeArguments="x:String" x:Key="in_TransactionStatus">
+                                                                  <Literal x:TypeArguments="x:String">Rejected</Literal>
+                                                                </InArgument>
+                                                              </ui:InvokeWorkflowFile.Arguments>
+                                                            </ui:InvokeWorkflowFile>
+                                                            <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_2" in_ActuallApproveTransactions="True" in_ApprovalType="Reject" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtTransactions]" />
+                                                          </Sequence>
+                                                          <FlowStep.Next>
+                                                            <FlowStep x:Name="__ReferenceID0">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <av:Point x:Key="ShapeLocation">309,710</av:Point>
+                                                                  <av:Size x:Key="ShapeSize">262,60</av:Size>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                                                <Assign.To>
+                                                                  <OutArgument x:TypeArguments="x:Int32">[loopIndex]</OutArgument>
+                                                                </Assign.To>
+                                                                <Assign.Value>
+                                                                  <InArgument x:TypeArguments="x:Int32">[loopIndex + 1]</InArgument>
+                                                                </Assign.Value>
+                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                  </scg:Dictionary>
+                                                                </sap:WorkflowViewStateService.ViewState>
+                                                              </Assign>
+                                                            </FlowStep>
+                                                          </FlowStep.Next>
                                                         </FlowStep>
-                                                      </FlowStep.Next>
-                                                    </FlowStep>
-                                                  </FlowDecision.True>
-                                                  <FlowDecision.False>
-                                                    <x:Reference>__ReferenceID0</x:Reference>
-                                                  </FlowDecision.False>
-                                                </FlowDecision>
+                                                      </FlowDecision.True>
+                                                      <FlowDecision.False>
+                                                        <x:Reference>__ReferenceID0</x:Reference>
+                                                      </FlowDecision.False>
+                                                    </FlowDecision>
+                                                  </FlowStep.Next>
+                                                </FlowStep>
                                               </FlowStep.Next>
                                             </FlowStep>
                                           </FlowStep.Next>
@@ -508,7 +525,7 @@
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <av:Point x:Key="ShapeLocation">599,239.54</av:Point>
                                               <av:Size x:Key="ShapeSize">200,94</av:Size>
-                                              <av:PointCollection x:Key="ConnectorLocation">699,333.54 699,363.54 440,363.54 440,389</av:PointCollection>
+                                              <av:PointCollection x:Key="ConnectorLocation">699,333.54 699,363.54 440,363.54 440,414.5</av:PointCollection>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                           <e:CSP_SelectTransactionForProcessing in_SelectAllTransactions="{x:Null}" sap2010:Annotation.AnnotationText="The ratio is less then or equal to half therefore just select the individual transactions to process on the current page" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionForProcessing_3" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_TransactionStatuses="[dtAuthoriseTransactions]" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]">
@@ -532,13 +549,14 @@
                             <x:Reference>__ReferenceID3</x:Reference>
                             <x:Reference>__ReferenceID4</x:Reference>
                             <x:Reference>__ReferenceID5</x:Reference>
-                            <x:Reference>__ReferenceID1</x:Reference>
                             <x:Reference>__ReferenceID6</x:Reference>
                             <x:Reference>__ReferenceID7</x:Reference>
+                            <x:Reference>__ReferenceID8</x:Reference>
                             <x:Reference>__ReferenceID0</x:Reference>
+                            <x:Reference>__ReferenceID1</x:Reference>
                           </Flowchart>
                           <FlowStep.Next>
-                            <FlowDecision x:Name="__ReferenceID14" Condition="[moreTransactionsToApprove And ((loopIndex &lt; CInt(in_Config(&quot;MaxPageRuns&quot;))) Or (CInt(in_Config(&quot;MaxPageRuns&quot;)) = -1))]" DisplayName="Any more transactions to process?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5" True="{x:Reference __ReferenceID9}">
+                            <FlowDecision x:Name="__ReferenceID15" Condition="[moreTransactionsToApprove And ((loopIndex &lt; CInt(in_Config(&quot;MaxPageRuns&quot;))) Or (CInt(in_Config(&quot;MaxPageRuns&quot;)) = -1))]" DisplayName="Any more transactions to process?" sap:VirtualizedContainerService.HintSize="160,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5" True="{x:Reference __ReferenceID10}">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -562,11 +580,11 @@
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <x:Reference>__ReferenceID10</x:Reference>
     <x:Reference>__ReferenceID11</x:Reference>
     <x:Reference>__ReferenceID12</x:Reference>
-    <x:Reference>__ReferenceID9</x:Reference>
     <x:Reference>__ReferenceID13</x:Reference>
+    <x:Reference>__ReferenceID10</x:Reference>
     <x:Reference>__ReferenceID14</x:Reference>
+    <x:Reference>__ReferenceID15</x:Reference>
   </Flowchart>
 </Activity>
