@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1147,1000</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>677,1000</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -636,16 +636,28 @@
                                         <ui:CopyFile ContinueOnError="{x:Null}" Destination="[refundFileFullPath]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="[Path.Combine(refundFolder, previousRefundFile)]" />
                                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ReturnWorkbook workflow" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_File">[refundFileFullPath]</InArgument>
-                                            <OutArgument x:TypeArguments="ui:WorkbookApplication" x:Key="out_Workbook">[refundMasterWorkbook]</OutArgument>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_Password">[string.Empty]</InArgument>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_EditPassword">[string.Empty]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_File">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="refundFileFullPath" />
+                                            </InArgument>
+                                            <OutArgument x:TypeArguments="ui:WorkbookApplication" x:Key="out_Workbook">
+                                              <mva:VisualBasicReference x:TypeArguments="ui:WorkbookApplication" ExpressionText="refundMasterWorkbook" />
+                                            </OutArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_Password">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="string.Empty" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_EditPassword">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="string.Empty" />
+                                            </InArgument>
                                           </ui:InvokeWorkflowFile.Arguments>
                                         </ui:InvokeWorkflowFile>
                                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ClearSheets workflow" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ClearSheets.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="s:String[]" x:Key="in_Sheets">[{"Refunds - FIN|L2:O2-L3|A2","MR-FIN|K2:Q2-K3|A2","Cancellation|M2:N2-M3|A2"}]</InArgument>
-                                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_Workbook">[refundMasterWorkbook]</InArgument>
+                                            <InArgument x:TypeArguments="s:String[]" x:Key="in_Sheets">
+                                              <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;Refunds - FIN|L2:O2-L3|A2&quot;,&quot;MR-FIN|K2:Q2-K3|A2&quot;,&quot;Cancellation|M2:N2-M3|A2&quot;}" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_Workbook">
+                                              <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="refundMasterWorkbook" />
+                                            </InArgument>
                                           </ui:InvokeWorkflowFile.Arguments>
                                         </ui:InvokeWorkflowFile>
                                       </Sequence>

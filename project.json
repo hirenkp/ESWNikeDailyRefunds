@@ -3,7 +3,7 @@
   "description": "",
   "main": "Main.xaml",
   "dependencies": {
-    "ESWCustomerServicesPortal": "[1.0.1-alpha.31]",
+    "ESWCustomerServicesPortal": "[1.0.1-alpha.33]",
     "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.System.Activities": "[20.10.1]",
     "UiPath.UIAutomation.Activities": "[20.10.6]"
@@ -34,7 +34,10 @@
       "privateWorkflows": []
     },
     "processOptions": {
-      "ignoredFiles": []
+      "ignoredFiles": [
+        "Test Workflows/ReadExcel.xaml",
+        "Test Workflows/Process - Copy (1).xaml"
+      ]
     },
     "fileInfoCollection": [],
     "modernBehavior": false
