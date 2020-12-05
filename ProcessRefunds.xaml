@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,986</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1136,1026</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessRefunds_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -165,7 +165,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">450,338 450,366.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <e:CSP_SearchFinancialTransactions in_ProcessingStatus="{x:Null}" sap2010:Annotation.AnnotationText="Search transactions based on incoming Payment Type in the transaction item" sap:VirtualizedContainerService.HintSize="200,79" sap2010:WorkflowViewState.IdRef="CSP_SearchFinancialTransactions_1" in_AuthorisationSatuses="[statusPending]" in_Brand="[in_Config(&quot;Brand&quot;).ToString()]" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="True" in_FromDate="[in_Config(&quot;FromDate&quot;).ToString()]" in_PaymentType="[in_TransactionItem(&quot;Type&quot;).ToString()]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" in_ToDate="[in_Config(&quot;ToDate&quot;).ToString()]" in_TransactionType="[in_Config(&quot;TransactionType&quot;).ToString()]" out_BusinessException="[out_BusinessException]" out_SearchResults="[dtTransactions]" out_SystemException="[out_SystemException]">
+              <e:CSP_SearchFinancialTransactions in_ProcessingStatus="{x:Null}" sap2010:Annotation.AnnotationText="Search transactions based on incoming Payment Type in the transaction item" sap:VirtualizedContainerService.HintSize="200,79" sap2010:WorkflowViewState.IdRef="CSP_SearchFinancialTransactions_1" in_AuthorisationSatuses="[statusPending]" in_Brand="[in_Config(&quot;Brand&quot;).ToString()]" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_FromDate="[in_Config(&quot;FromDate&quot;).ToString()]" in_PaymentType="[in_TransactionItem(&quot;Type&quot;).ToString()]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" in_ToDate="[in_Config(&quot;ToDate&quot;).ToString()]" in_TransactionType="[in_Config(&quot;TransactionType&quot;).ToString()]" out_BusinessException="[out_BusinessException]" out_SearchResults="[dtTransactions]" out_SystemException="[out_SystemException]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -217,6 +217,8 @@
                             <InArgument x:TypeArguments="s:Int64[]" x:Key="in_SearchRowRange">[newlyAddedRowsRange]</InArgument>
                             <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToAuthorise">[dtAuthoriseTransactions]</OutArgument>
                             <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToReject">[dtRejectTransactions]</OutArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FraudPhrase">[in_Config("FraudPhrase").ToString()]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_BankDetailsChangedPhrase">[in_Config("BankDetailsChangedPhrase").ToString()]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </Sequence>
@@ -382,15 +384,9 @@
                                               </sap:WorkflowViewStateService.ViewState>
                                               <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
                                                 <ui:InvokeWorkflowFile.Arguments>
-                                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">
-                                                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtAuthoriseTransactions" />
-                                                  </InArgument>
-                                                  <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">
-                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TransactionAuditFile&quot;).ToString()" />
-                                                  </InArgument>
-                                                  <InArgument x:TypeArguments="x:String" x:Key="in_TransactionStatus">
-                                                    <Literal x:TypeArguments="x:String">Authorised</Literal>
-                                                  </InArgument>
+                                                  <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">[dtAuthoriseTransactions]</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">[in_Config("TransactionAuditFile").ToString()]</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_TransactionStatus">Authorised</InArgument>
                                                 </ui:InvokeWorkflowFile.Arguments>
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -470,15 +466,9 @@
                                                             <e:CSP_SelectTransactionForProcessing in_SelectAllTransactions="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionForProcessing_4" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_TransactionStatuses="[dtRejectTransactions]" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]" />
                                                             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
                                                               <ui:InvokeWorkflowFile.Arguments>
-                                                                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">
-                                                                  <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtRejectTransactions" />
-                                                                </InArgument>
-                                                                <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">
-                                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TransactionAuditFile&quot;).ToString()" />
-                                                                </InArgument>
-                                                                <InArgument x:TypeArguments="x:String" x:Key="in_TransactionStatus">
-                                                                  <Literal x:TypeArguments="x:String">Rejected</Literal>
-                                                                </InArgument>
+                                                                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">[dtRejectTransactions]</InArgument>
+                                                                <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">[in_Config("TransactionAuditFile").ToString()]</InArgument>
+                                                                <InArgument x:TypeArguments="x:String" x:Key="in_TransactionStatus">Rejected</InArgument>
                                                               </ui:InvokeWorkflowFile.Arguments>
                                                             </ui:InvokeWorkflowFile>
                                                             <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_2" in_ActuallApproveTransactions="True" in_ApprovalType="Reject" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtTransactions]" />

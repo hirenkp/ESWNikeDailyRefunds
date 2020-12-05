@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1147,805</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1136,615</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>RMF_GetLastFraudEntry_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -63,7 +63,7 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="RMF_GetLastFraudEntry" sap:VirtualizedContainerService.HintSize="476,452" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Get the last fraud entry in the master file fraud sheet" sap:VirtualizedContainerService.HintSize="476,452" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>

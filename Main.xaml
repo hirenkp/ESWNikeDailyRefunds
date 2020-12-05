@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,900</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1136,900</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -235,24 +235,12 @@
                       </Assign>
                       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
-                            <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="TransactionItem" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                          </InArgument>
-                          <OutArgument x:TypeArguments="ui:BusinessRuleException" x:Key="out_BusinessException">
-                            <mva:VisualBasicReference x:TypeArguments="ui:BusinessRuleException" ExpressionText="BusinessException" />
-                          </OutArgument>
-                          <OutArgument x:TypeArguments="s:Exception" x:Key="out_SystemException">
-                            <mva:VisualBasicReference x:TypeArguments="s:Exception" ExpressionText="SystemException" />
-                          </OutArgument>
-                          <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">
-                            <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="refundMasterWorkbook" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_TransactionAuditWorkbook">
-                            <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="transactionAuditFileWorkbook" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                          <OutArgument x:TypeArguments="ui:BusinessRuleException" x:Key="out_BusinessException">[BusinessException]</OutArgument>
+                          <OutArgument x:TypeArguments="s:Exception" x:Key="out_SystemException">[SystemException]</OutArgument>
+                          <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">[refundMasterWorkbook]</InArgument>
+                          <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_TransactionAuditWorkbook">[transactionAuditFileWorkbook]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </Sequence>
@@ -684,23 +672,15 @@
                                       <OutArgument x:TypeArguments="x:String">[dailyFraudListFile]</OutArgument>
                                     </Assign.To>
                                     <Assign.Value>
-                                      <InArgument x:TypeArguments="x:String">[Config("DailyFraudFile").ToString().Replace("{date}",Now.ToString("dd.MM.yyyy"))]</InArgument>
+                                      <InArgument x:TypeArguments="x:String">[Config("DailyFraudFile").ToString()]</InArgument>
                                     </Assign.Value>
                                   </Assign>
                                   <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke FraudList_ExtractRows workflow" sap:VirtualizedContainerService.HintSize="916,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="FraudList\FL_ExtractRows.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_File">
-                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="dailyFraudListFile" />
-                                      </InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">
-                                        <Literal x:TypeArguments="x:String">Sheet1</Literal>
-                                      </InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_Query">
-                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Format(&quot;[Value]='{0}' And [Name]='{1}' And [Refund Date]=#{2}#&quot;, lastFraudEntry(&quot;Value&quot;).ToString(), lastFraudEntry(&quot;Name&quot;).ToString(), CDate(lastFraudEntry(&quot;Refund Date&quot;)).ToString(&quot;MM/dd/yyyy&quot;))" />
-                                      </InArgument>
-                                      <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_FraudList">
-                                        <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtFraudList" />
-                                      </OutArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_File">[dailyFraudListFile]</InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">Sheet1</InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_Query">[String.Format("[Value]='{0}' And [Name]='{1}' And [Refund Date]=#{2}#", lastFraudEntry("Value").ToString(), lastFraudEntry("Name").ToString(), CDate(lastFraudEntry("Refund Date")).ToString("MM/dd/yyyy"))]</InArgument>
+                                      <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_FraudList">[dtFraudList]</OutArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
                                   </ui:InvokeWorkflowFile>
                                   <If Condition="[Not dtFraudList Is Nothing]" sap:VirtualizedContainerService.HintSize="916,260" sap2010:WorkflowViewState.IdRef="If_13">
@@ -735,18 +715,10 @@
                                     </sap:WorkflowViewStateService.ViewState>
                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Open Transaction Audit file and return reference to Workbook" sap:VirtualizedContainerService.HintSize="345,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_File">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;TransactionAuditFile&quot;).ToString()" />
-                                        </InArgument>
-                                        <OutArgument x:TypeArguments="ui:WorkbookApplication" x:Key="out_Workbook">
-                                          <mva:VisualBasicReference x:TypeArguments="ui:WorkbookApplication" ExpressionText="transactionAuditFileWorkbook" />
-                                        </OutArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_Password">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="string.Empty" />
-                                        </InArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="in_EditPassword">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="string.Empty" />
-                                        </InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_File">[Config("TransactionAuditFile").ToString()]</InArgument>
+                                        <OutArgument x:TypeArguments="ui:WorkbookApplication" x:Key="out_Workbook">[transactionAuditFileWorkbook]</OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_Password">[string.Empty]</InArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="in_EditPassword">[string.Empty]</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                   </Sequence>
@@ -758,7 +730,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:CommentOut>
-                              <ui:BuildDataTable DataTable="[dtTransactionAudit]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="1000,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Date&quot; msdata:Caption=&quot;&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Order_x0020_No_x002C_&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Return_x0020_No.&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Trans._x0020_Type&quot; msdata:Caption=&quot;&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Payment_x0020_Type&quot; msdata:Caption=&quot;&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Amount&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Approval_x0020_Status&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+                              <ui:BuildDataTable DataTable="[dtTransactionAudit]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="1000,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Date&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Order_x0020_No_x002C_&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Return_x0020_No.&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Trans._x0020_Type&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Payment_x0020_Type&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Amount&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Approval_x0020_Status&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
                               <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke LoadTransactions workflow" sap:VirtualizedContainerService.HintSize="1000,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="LoadTransactions.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TransactionData">[TransactionData]</InOutArgument>
