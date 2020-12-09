@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,960</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1136,900</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -49,7 +49,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -82,6 +82,8 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>ESWCustomerServicesPortal_Expressions_29848855</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[Process title]&#xA;[Process description]&#xA;[Additional information (e.g., author, contact information and applications involved and required external setup)]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="687,795" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -349,9 +351,9 @@
                     <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException IsNot Nothing" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
                   </Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="1126,5078" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="1126,5147" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
-                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="1080,4660" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="1080,4729" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <TryCatch.Variables>
                             <Variable x:TypeArguments="x:String" Name="refundFile" />
                             <Variable x:TypeArguments="x:String" Name="refundFolder" />
@@ -363,7 +365,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <TryCatch.Try>
-                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="1042,4433" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="1042,4502" sap2010:WorkflowViewState.IdRef="Sequence_4">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:String" Name="rootUrl" />
                                 <Variable x:TypeArguments="x:String" Name="searchFinTransUrlPath" />
@@ -382,7 +384,7 @@
                                   <InArgument x:TypeArguments="s:Exception">[Nothing]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[Config is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="484,245" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[Config is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="1000,108" sap2010:WorkflowViewState.IdRef="If_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -426,9 +428,7 @@
                                     </If>
                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Kills all Windows processes representing applications used in this business process to assure that the execution starts in a clean state.&#xA;Since the applications are assumed to be already closed, CloseAllApplications is skipped and just KillAllProcess is invoked." DisplayName="Invoke KillAllProcesses workflow (first run)" sap:VirtualizedContainerService.HintSize="484,214" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Framework\KillAllProcesses.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                                        </InArgument>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -451,7 +451,7 @@
                                   </Sequence>
                                 </If.Then>
                               </If>
-                              <Sequence DisplayName="Prepare refund master file" sap:VirtualizedContainerService.HintSize="1000,3368" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                              <Sequence DisplayName="Prepare refund master file" sap:VirtualizedContainerService.HintSize="1000,3437" sap2010:WorkflowViewState.IdRef="Sequence_40">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -510,7 +510,7 @@
                                     </If.Then>
                                   </If>
                                 </Sequence>
-                                <Sequence sap2010:Annotation.AnnotationText="Open the refund master file for the current month. If the file does not exist then roll forward the file from the previous month and remove contents from process specific sheets.&#xA;&#xA;An assumption is made that at the very least a previous months file will always exists" DisplayName="Open refund master file, copy previous if one does not exist" sap:VirtualizedContainerService.HintSize="958,2477" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                <Sequence sap2010:Annotation.AnnotationText="Open the refund master file for the current month. If the file does not exist then roll forward the file from the previous month and remove contents from process specific sheets.&#xA;&#xA;An assumption is made that at the very least a previous months file will always exists" DisplayName="Open refund master file, copy previous if one does not exist" sap:VirtualizedContainerService.HintSize="958,2546" sap2010:WorkflowViewState.IdRef="Sequence_31">
                                   <Sequence.Variables>
                                     <Variable x:TypeArguments="x:Boolean" Name="fileExists" />
                                     <Variable x:TypeArguments="x:String" Name="previousRefundFile" />
@@ -520,6 +520,7 @@
                                     <Variable x:TypeArguments="sd:DataTable" Name="dtFraudList" />
                                     <Variable x:TypeArguments="x:String" Name="appendedFraudRange" />
                                     <Variable x:TypeArguments="x:String" Name="dailyFraudListFile" />
+                                    <Variable x:TypeArguments="x:String" Name="fraudQuery" />
                                   </Sequence.Variables>
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -664,24 +665,50 @@
                                   </Assign>
                                   <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_GetLastFraudEntry workflow" sap:VirtualizedContainerService.HintSize="916,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="RefundMaster\RMF_GetLastFraudEntry.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_Workbook">[refundMasterWorkbook]</InArgument>
-                                      <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_LastFraudEntry">[lastFraudEntry]</OutArgument>
+                                      <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_Workbook">
+                                        <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="refundMasterWorkbook" />
+                                      </InArgument>
+                                      <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_LastFraudEntry">
+                                        <mva:VisualBasicReference x:TypeArguments="sd:DataRow" ExpressionText="lastFraudEntry" />
+                                      </OutArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
                                   </ui:InvokeWorkflowFile>
-                                  <Assign sap:VirtualizedContainerService.HintSize="916,60" sap2010:WorkflowViewState.IdRef="Assign_29">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:String">[dailyFraudListFile]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:String">[Config("DailyFraudFile").ToString()]</InArgument>
-                                    </Assign.Value>
-                                  </Assign>
+                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="916,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+                                    <ui:MultipleAssign.AssignOperations>
+                                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[dailyFraudListFile]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String">[Config("DailyFraudFile").ToString()]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                                          <ui:AssignOperation.To>
+                                            <OutArgument x:TypeArguments="x:String">[fraudQuery]</OutArgument>
+                                          </ui:AssignOperation.To>
+                                          <ui:AssignOperation.Value>
+                                            <InArgument x:TypeArguments="x:String" xml:space="preserve">[String.Format("[Order number]='{0}' And  [Value]='{1}' And [Refund Date]=#{2}#", lastFraudEntry("Order number").ToString(), lastFraudEntry("Value").ToString(), CDate(lastFraudEntry("Refund Date")).ToString("MM/dd/yyyy"))]</InArgument>
+                                          </ui:AssignOperation.Value>
+                                        </ui:AssignOperation>
+                                      </scg:List>
+                                    </ui:MultipleAssign.AssignOperations>
+                                  </ui:MultipleAssign>
                                   <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke FraudList_ExtractRows workflow" sap:VirtualizedContainerService.HintSize="916,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="FraudList\FL_ExtractRows.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_File">[dailyFraudListFile]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">Sheet1</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_Query">[String.Format("[Value]='{0}' And [Name]='{1}' And [Refund Date]=#{2}#", lastFraudEntry("Value").ToString(), lastFraudEntry("Name").ToString(), CDate(lastFraudEntry("Refund Date")).ToString("MM/dd/yyyy"))]</InArgument>
-                                      <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_FraudList">[dtFraudList]</OutArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_File">
+                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="dailyFraudListFile" />
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">
+                                        <Literal x:TypeArguments="x:String">Sheet1</Literal>
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_Query">
+                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="fraudQuery" />
+                                      </InArgument>
+                                      <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_FraudList">
+                                        <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtFraudList" />
+                                      </OutArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
                                   </ui:InvokeWorkflowFile>
                                   <If Condition="[Not dtFraudList Is Nothing]" sap:VirtualizedContainerService.HintSize="916,260" sap2010:WorkflowViewState.IdRef="If_13">
@@ -886,9 +913,7 @@
                                           <ui:LogMessage DisplayName="Log message (Failed to close applications)" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Warn" Message="[&quot;Applications failed to close gracefully. &quot;+Exception.Message+&quot; at Source: &quot;+Exception.Source]" />
                                           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke KillAllProcesses workflow (End process)" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Framework\KillAllProcesses.xaml">
                                             <ui:InvokeWorkflowFile.Arguments>
-                                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                                              </InArgument>
+                                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                                             </ui:InvokeWorkflowFile.Arguments>
                                           </ui:InvokeWorkflowFile>
                                         </Sequence>
