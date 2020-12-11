@@ -1,4 +1,0 @@
-Public Function UpdateCalculation()
-	Application.Calculation = xlCalculationAutomatic
-	Application.ScreenUpdating = False            
-End Function
