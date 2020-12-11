@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1208,1086</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1488,1086</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessRefunds_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -166,7 +166,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">450,338 450,366.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <e:CSP_SearchFinancialTransactions in_ProcessingStatus="{x:Null}" sap2010:Annotation.AnnotationText="Search transactions based on incoming Payment Type in the transaction item" sap:VirtualizedContainerService.HintSize="200,79" sap2010:WorkflowViewState.IdRef="CSP_SearchFinancialTransactions_1" in_AuthorisationSatuses="[statusPending]" in_Brand="[in_Config(&quot;Brand&quot;).ToString()]" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_FromDate="[in_Config(&quot;FromDate&quot;).ToString()]" in_PaymentType="[in_TransactionItem(&quot;Type&quot;).ToString()]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" in_ToDate="[in_Config(&quot;ToDate&quot;).ToString()]" in_TransactionType="[in_Config(&quot;TransactionType&quot;).ToString()]" out_BusinessException="[out_BusinessException]" out_SearchResults="[dtTransactions]" out_SystemException="[out_SystemException]">
+              <e:CSP_SearchFinancialTransactions in_ProcessingStatus="{x:Null}" sap2010:Annotation.AnnotationText="Search transactions based on incoming Payment Type in the transaction item" sap:VirtualizedContainerService.HintSize="200,79" sap2010:WorkflowViewState.IdRef="CSP_SearchFinancialTransactions_1" in_AuthorisationSatuses="[statusPending]" in_Brand="[in_Config(&quot;Brand&quot;).ToString()]" in_DelayBetweenOpeningConsoleAndSettingDate="[CInt(in_Config(&quot;ConsoleToDateDelay&quot;))]" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_FromDate="[in_Config(&quot;FromDate&quot;).ToString()]" in_PaymentType="[in_TransactionItem(&quot;Type&quot;).ToString()]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" in_ToDate="[in_Config(&quot;ToDate&quot;).ToString()]" in_TransactionType="[in_Config(&quot;TransactionType&quot;).ToString()]" out_BusinessException="[out_BusinessException]" out_SearchResults="[dtTransactions]" out_SystemException="[out_SystemException]">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -232,7 +232,7 @@
                               <av:PointCollection x:Key="ConnectorLocation">160,734.5 160,784.5</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Flowchart sap2010:Annotation.AnnotationText="Based on the previous step two datatables will be generated, one for authorisation and one for rejection.&#xA;If there are any rows in the datatables then the approval process will take place." DisplayName="Authorise and or reject transactions" sap:VirtualizedContainerService.HintSize="898,958" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+                          <Flowchart sap2010:Annotation.AnnotationText="Based on the previous step two datatables will be generated, one for authorisation and one for rejection.&#xA;If there are any rows in the datatables then the approval process will take place." DisplayName="Authorise and or reject transactions" sap:VirtualizedContainerService.HintSize="200,183" sap2010:WorkflowViewState.IdRef="Flowchart_2">
                             <Flowchart.Variables>
                               <Variable x:TypeArguments="x:Double" Name="percentageAuthoriseToReject" />
                             </Flowchart.Variables>
@@ -322,19 +322,19 @@
                                               <av:PointCollection x:Key="ConnectorLocation">169,319.54 169,349.54 453.641666666667,349.54 453.641666666667,376.5</av:PointCollection>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <Sequence DisplayName="Authorise transactions" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                          <Sequence DisplayName="Authorise transactions" sap:VirtualizedContainerService.HintSize="242,423" sap2010:WorkflowViewState.IdRef="Sequence_3">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <e:CSP_SelectTransactionForProcessing in_TransactionStatuses="{x:Null}" sap2010:Annotation.AnnotationText="Check all transactions as the ratio of authorise to reject is greater then half" sap:VirtualizedContainerService.HintSize="200,79" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionForProcessing_1" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_SelectAllTransactions="True" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]">
+                                            <e:CSP_SelectTransactionsForProcessing in_TransactionStatuses="{x:Null}" sap2010:Annotation.AnnotationText="Check all transactions as the ratio of authorise to reject is greater then half" sap:VirtualizedContainerService.HintSize="200,79" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionsForProcessing_1" in_SelectAllTransactions="True" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                            </e:CSP_SelectTransactionForProcessing>
+                                            </e:CSP_SelectTransactionsForProcessing>
                                             <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Temporarily set selected field to 0, to uncheck" DataTable="[dtRejectTransactions]" DisplayName="For Each Reject Row" sap:VirtualizedContainerService.HintSize="200,93" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                                               <ui:ForEachRow.Body>
                                                 <ActivityAction x:TypeArguments="sd:DataRow">
@@ -366,19 +366,16 @@
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
                                             </ui:ForEachRow>
-                                            <e:CSP_SelectTransactionForProcessing in_SelectAllTransactions="{x:Null}" sap2010:Annotation.AnnotationText="As all the transactions on the current page have been selected, uncheck all transactions to reject based on the reject datatable" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionForProcessing_2" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_TransactionStatuses="[dtRejectTransactions]" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]">
+                                            <e:CSP_SelectTransactionsForProcessing in_SelectAllTransactions="{x:Null}" sap2010:Annotation.AnnotationText="Check all transactions as the ratio of authorise to reject is greater then half" sap:VirtualizedContainerService.HintSize="200,79" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionsForProcessing_5" in_TransactionStatuses="[dtRejectTransactions]" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                            </e:CSP_SelectTransactionForProcessing>
+                                            </e:CSP_SelectTransactionsForProcessing>
                                           </Sequence>
                                           <FlowStep.Next>
-                                            <FlowDecision x:Name="__ReferenceID2" DisplayName="Generate Audit File" sap:VirtualizedContainerService.HintSize="106,87" sap2010:WorkflowViewState.IdRef="FlowDecision_6">
-                                              <FlowDecision.Condition>
-                                                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(in_Config(&quot;GenerateAuditFile&quot;).ToString)" />
-                                              </FlowDecision.Condition>
+                                            <FlowDecision x:Name="__ReferenceID2" Condition="[CBool(in_Config(&quot;GenerateAuditFile&quot;).ToString)]" DisplayName="Generate Audit File" sap:VirtualizedContainerService.HintSize="106,87" sap2010:WorkflowViewState.IdRef="FlowDecision_6">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -420,7 +417,7 @@
                                                           <av:PointCollection x:Key="ConnectorLocation">440,611 440,651</av:PointCollection>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
-                                                      <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_1" in_ActuallApproveTransactions="True" in_ApprovalType="Authorise" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtTransactions]" />
+                                                      <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_1" in_ApprovalType="Authorise" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtTransactions]" />
                                                       <FlowStep.Next>
                                                         <FlowDecision x:Name="__ReferenceID7" Condition="[(dtRejectTransactions.Rows.Count &gt; 0) And (moreTransactionsToApprove = True)]" DisplayName="Any transactions to reject" sap:VirtualizedContainerService.HintSize="140,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
                                                           <sap:WorkflowViewStateService.ViewState>
@@ -443,7 +440,7 @@
                                                                   <av:PointCollection x:Key="ConnectorLocation">170,727.5 170,757.5 440,757.5 440,780</av:PointCollection>
                                                                 </scg:Dictionary>
                                                               </sap:WorkflowViewStateService.ViewState>
-                                                              <Sequence DisplayName="Reject transactions" sap:VirtualizedContainerService.HintSize="526,609" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                                              <Sequence DisplayName="Reject transactions" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -480,7 +477,7 @@
                                                                     </scg:Dictionary>
                                                                   </sap:WorkflowViewStateService.ViewState>
                                                                 </ui:ForEachRow>
-                                                                <e:CSP_SelectTransactionForProcessing in_SelectAllTransactions="{x:Null}" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionForProcessing_4" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_TransactionStatuses="[dtRejectTransactions]" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]" />
+                                                                <e:CSP_SelectTransactionsForProcessing in_SelectAllTransactions="{x:Null}" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionsForProcessing_4" in_TransactionStatuses="[dtRejectTransactions]" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]" />
                                                                 <If Condition="[CBool(in_Config(&quot;GenerateAuditFile&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="484,260" sap2010:WorkflowViewState.IdRef="If_1">
                                                                   <If.Then>
                                                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
@@ -492,7 +489,7 @@
                                                                     </ui:InvokeWorkflowFile>
                                                                   </If.Then>
                                                                 </If>
-                                                                <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_2" in_ActuallApproveTransactions="True" in_ApprovalType="Reject" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtTransactions]" />
+                                                                <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_2" in_ApprovalType="Reject" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtTransactions]" />
                                                               </Sequence>
                                                               <FlowStep.Next>
                                                                 <FlowStep x:Name="__ReferenceID0">
@@ -544,13 +541,13 @@
                                               <av:PointCollection x:Key="ConnectorLocation">699,333.54 699,363.54 453.641666666667,363.54 453.641666666667,376.5</av:PointCollection>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <e:CSP_SelectTransactionForProcessing in_SelectAllTransactions="{x:Null}" sap2010:Annotation.AnnotationText="The ratio is less then or equal to half therefore just select the individual transactions to process on the current page" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionForProcessing_3" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_TransactionStatuses="[dtAuthoriseTransactions]" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]">
+                                          <e:CSP_SelectTransactionsForProcessing in_SelectAllTransactions="{x:Null}" sap2010:Annotation.AnnotationText="The ratio is less then or equal to half therefore just select the individual transactions to process on the current page" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionsForProcessing_3" in_TransactionStatuses="[dtAuthoriseTransactions]" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                          </e:CSP_SelectTransactionForProcessing>
+                                          </e:CSP_SelectTransactionsForProcessing>
                                           <FlowStep.Next>
                                             <x:Reference>__ReferenceID2</x:Reference>
                                           </FlowStep.Next>

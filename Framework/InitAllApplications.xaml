@@ -125,6 +125,6 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <e:CSP_Login sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_Login_1" in_BrowserProcessName="[in_Config(&quot;BrowserProcessName&quot;).ToString()]" in_Password="[password]" in_Url="[Path.Combine(rootUrl, loginUrlPath)]" in_Username="[username]" out_BusinessException="[businessException]" out_LoginSuccessfull="[loginSuccess]" out_SystemException="[systemException]" />
+    <e:CSP_Login sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_Login_1" in_Password="[password]" in_Url="[Path.Combine(rootUrl, loginUrlPath)]" in_Username="[username]" out_BusinessException="[businessException]" out_LoginSuccessfull="[loginSuccess]" out_SystemException="[systemException]" />
   </Sequence>
 </Activity>

@@ -809,7 +809,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:InvokeWorkflowFile>
-                              <e:CSP_NavigateToPageViaUrl sap:VirtualizedContainerService.HintSize="1000,22" sap2010:WorkflowViewState.IdRef="CSP_NavigateToPageViaUrl_1" in_BrowserProcessName="[Config(&quot;BrowserProcessName&quot;).ToString()]" in_UrlPath="[Path.Combine(rootUrl, searchFinTransUrlPath)]" out_SystemException="[SystemException]" />
+                              <e:CSP_NavigateToPageViaUrl sap:VirtualizedContainerService.HintSize="1000,22" sap2010:WorkflowViewState.IdRef="CSP_NavigateToPageViaUrl_1" in_UrlPath="[Path.Combine(rootUrl, searchFinTransUrlPath)]" out_SystemException="[SystemException]" />
                             </Sequence>
                           </TryCatch.Try>
                           <TryCatch.Catches>
