@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1147,824</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1442,839</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Excel_ConvertNumberToColumn_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="42">
@@ -63,7 +63,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Given the index of the column this workflow will return the column id by letter(s)" DisplayName="Excel_ConvertNumberToColumn" sap:VirtualizedContainerService.HintSize="412,659" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Given the index of the column this workflow will return the column id by letter(s). The index is 1 based so 1 will be equal o column A and 2 Column B and so on." DisplayName="Excel_ConvertNumberToColumn" sap:VirtualizedContainerService.HintSize="412,674" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="div" />
       <Variable x:TypeArguments="x:Int32" Name="modium" />

@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1147,1674</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1442,1826</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AppendRowsToSheetInExisitingWorkbook_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -72,10 +72,9 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AppendRowsToSheetInExisitingWorkbook" sap:VirtualizedContainerService.HintSize="697,1509" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AppendRowsToSheetInExisitingWorkbook" sap:VirtualizedContainerService.HintSize="697,1661" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:WorkbookApplication" Name="workbook" />
     </Sequence.Variables>
@@ -106,13 +105,13 @@
         </Assign>
       </If.Else>
     </If>
-    <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" ExistingWorkbook="[workbook]" sap:VirtualizedContainerService.HintSize="655,1117" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Workbook="[workbook]">
+    <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" ExistingWorkbook="[workbook]" sap:VirtualizedContainerService.HintSize="655,1269" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Workbook="[workbook]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,1008" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,1160" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dtRefunds" />
               <Variable x:TypeArguments="x:Int64" Name="appendRangeRowStart" />
@@ -135,15 +134,18 @@
                 <InArgument x:TypeArguments="x:Int64">[dtRefunds.Rows.Count + 1]</InArgument>
               </Assign.Value>
             </Assign>
+            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TrimDataTableContent workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="General\TrimDataTableContent.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="io_DataTable">
+                  <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="in_Data" />
+                </OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
             <ui:ExcelAppendRange DataTable="[in_Data]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="484,87" sap2010:WorkflowViewState.IdRef="ExcelAppendRange_1" SheetName="[in_Sheet]" />
             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ConvertNumberToColumn workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ConvertNumberToColumn.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_ColumnName">
-                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="endRangeColumn" />
-                </OutArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="in_ColumnNumber">
-                  <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="dtRefunds.Columns.Count" />
-                </InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_ColumnName">[endRangeColumn]</OutArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_ColumnNumber">[dtRefunds.Columns.Count]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="484,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">

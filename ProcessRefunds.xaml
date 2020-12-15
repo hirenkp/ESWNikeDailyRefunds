@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1488,1086</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1442,1086</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessRefunds_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -192,7 +192,7 @@
                           <av:PointCollection x:Key="ConnectorLocation">160,501.5 160,551.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence sap2010:Annotation.AnnotationText="Append the rows extracted form the search results and apply formulas.&#xA;Once the formulas have been applied search specific columns for 'Fraud' or 'Bank Details Changed'" DisplayName="Append transactions and search for fraud" sap:VirtualizedContainerService.HintSize="200,183" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                      <Sequence sap2010:Annotation.AnnotationText="Append the rows extracted form the search results and apply formulas.&#xA;Once the formulas have been applied search specific columns for 'Fraud' or 'Bank Details Changed'" DisplayName="Append transactions and search for fraud" sap:VirtualizedContainerService.HintSize="421,413" sap2010:WorkflowViewState.IdRef="Sequence_1">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -201,14 +201,27 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_AppendRowsToSheet workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="RefundMaster\RMF_AppendRowsToSheetAndApplyFormulas.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Data">[dtTransactions]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">[in_TransactionItem("Sheet").ToString]</InArgument>
-                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_ApplyFormulas">True</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_FormulaRangeTemplate">[in_TransactionItem("Formula Range Template").ToString()]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_RefundDateColumnTemplate">[in_TransactionItem("Refund Date Column Template").ToString()]</InArgument>
-                            <OutArgument x:TypeArguments="s:Int64[]" x:Key="out_NewlyAddedRowsRange">[newlyAddedRowsRange]</OutArgument>
-                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">[in_MasterFileWorkbook]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_MasterFile">[string.Empty]</InArgument>
+                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Data">
+                              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtTransactions" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Sheet&quot;).ToString" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FormulaRangeTemplate">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Formula Range Template&quot;).ToString()" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RefundDateColumnTemplate">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Refund Date Column Template&quot;).ToString()" />
+                            </InArgument>
+                            <OutArgument x:TypeArguments="s:Int64[]" x:Key="out_NewlyAddedRowsRange">
+                              <mva:VisualBasicReference x:TypeArguments="s:Int64[]" ExpressionText="newlyAddedRowsRange" />
+                            </OutArgument>
+                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">
+                              <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="in_MasterFileWorkbook" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_MasterFile">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="string.Empty" />
+                            </InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_SearchForFraudulentTransactons workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="RefundMaster\RMF_SearchForFraudulentTransactons.xaml">
@@ -322,7 +335,7 @@
                                               <av:PointCollection x:Key="ConnectorLocation">169,319.54 169,349.54 453.641666666667,349.54 453.641666666667,376.5</av:PointCollection>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <Sequence DisplayName="Authorise transactions" sap:VirtualizedContainerService.HintSize="242,423" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                          <Sequence DisplayName="Authorise transactions" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_3">
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
