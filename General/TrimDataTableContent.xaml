@@ -1,11 +1,11 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="TrimDataTableContent" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="io_DataTable" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="io_DataTable" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410,1069</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1120,768</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TrimDataTableContent_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -40,7 +40,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="18">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -59,71 +59,94 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Trim Data Table Content" sap:VirtualizedContainerService.HintSize="562,904" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Trim Data Table Content" sap:VirtualizedContainerService.HintSize="526,603" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="colIndex">
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="colIndex" />
+      <Variable x:TypeArguments="scg:List(x:Int32)" Name="ListOfStringColumns">
         <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" />
+          <mva:VisualBasicValue x:TypeArguments="scg:List(x:Int32)" ExpressionText="new List(of Integer)" />
         </Variable.Default>
       </Variable>
-      <Variable x:TypeArguments="scg:List(x:Int32)" Name="ListOfStringColumns" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEach x:TypeArguments="sd:DataColumn" sap2010:Annotation.AnnotationText="Generate a list column indexes where the column datatype is of type string" CurrentIndex="[colIndex]" DisplayName="For Each column in the datatable check if it is of type string" sap:VirtualizedContainerService.HintSize="520,373" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[io_DataTable.Columns]">
-      <ui:ForEach.Body>
-        <ActivityAction x:TypeArguments="sd:DataColumn">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="column" />
-          </ActivityAction.Argument>
-          <If Condition="[column.DataType.Equals(GetType(String))]" DisplayName="If column datatype is string then set ColumnType to true otherwise set false" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_1">
-            <If.Then>
-              <AddToCollection x:TypeArguments="x:Int32" Collection="[ListOfStringColumns]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[colIndex]" />
-            </If.Then>
-          </If>
-        </ActivityAction>
-      </ui:ForEach.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:ForEach>
-    <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loop through each row of the datatable and if the cell in the column specified by list index is string then trim the value" DataTable="[io_DataTable]" DisplayName="For Each Row in the data table" sap:VirtualizedContainerService.HintSize="520,399" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-      <ui:ForEachRow.Body>
-        <ActivityAction x:TypeArguments="sd:DataRow">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-          </ActivityAction.Argument>
-          <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each string column trim the value" sap:VirtualizedContainerService.HintSize="307,194" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[ListOfStringColumns]">
+    <If Condition="[io_DataTable IsNot Nothing]" sap:VirtualizedContainerService.HintSize="484,511" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="242,363" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ForEach x:TypeArguments="sd:DataColumn" sap2010:Annotation.AnnotationText="Generate a list column indexes where the column datatype is of type string" CurrentIndex="[colIndex]" DisplayName="For Each column in the datatable check if it is of type string" sap:VirtualizedContainerService.HintSize="200,108" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[io_DataTable.Columns]">
             <ui:ForEach.Body>
-              <ActivityAction x:TypeArguments="x:Int32">
+              <ActivityAction x:TypeArguments="sd:DataColumn">
                 <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="x:Int32" Name="index" />
+                  <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="column" />
                 </ActivityAction.Argument>
-                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:Object">[row(index)]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:Object">[row(index).ToString().Trim()]</InArgument>
-                  </Assign.Value>
-                </Assign>
+                <If Condition="[column.DataType.Equals(GetType(String))]" DisplayName="If column datatype is string then set ColumnType to true otherwise set false" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If.Then>
+                    <AddToCollection x:TypeArguments="x:Int32" Collection="[ListOfStringColumns]" DisplayName="Add To Collection" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[colIndex]" />
+                  </If.Then>
+                </If>
               </ActivityAction>
             </ui:ForEach.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
           </ui:ForEach>
-        </ActivityAction>
-      </ui:ForEachRow.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:ForEachRow>
+          <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loop through each row of the datatable and if the cell in the column specified by list index is string then trim the value" DataTable="[io_DataTable]" DisplayName="For Each Row in the data table" sap:VirtualizedContainerService.HintSize="200,123" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                </ActivityAction.Argument>
+                <ui:ForEach x:TypeArguments="x:Int32" CurrentIndex="{x:Null}" DisplayName="For Each string column trim the value" sap:VirtualizedContainerService.HintSize="307,194" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[ListOfStringColumns]">
+                  <ui:ForEach.Body>
+                    <ActivityAction x:TypeArguments="x:Int32">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="x:Int32" Name="index" />
+                      </ActivityAction.Argument>
+                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[row(index)]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[row(index).ToString().Trim()]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </ActivityAction>
+                  </ui:ForEach.Body>
+                </ui:ForEach>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEachRow>
+        </Sequence>
+      </If.Then>
+    </If>
   </Sequence>
 </Activity>

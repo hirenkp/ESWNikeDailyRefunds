@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1136,900</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1136,1000</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -210,7 +210,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="231,187" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="484,1039" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
                 <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="438,553" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
@@ -351,9 +351,9 @@
                     <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="SystemException IsNot Nothing" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
                   </Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="1163,5348" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,103" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
-                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="1117,4930" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="1312,5338" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <TryCatch.Variables>
                             <Variable x:TypeArguments="x:String" Name="refundFile" />
                             <Variable x:TypeArguments="x:String" Name="refundFolder" />
@@ -365,7 +365,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <TryCatch.Try>
-                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="1079,4703" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="1274,5111" sap2010:WorkflowViewState.IdRef="Sequence_4">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:String" Name="rootUrl" />
                                 <Variable x:TypeArguments="x:String" Name="searchFinTransUrlPath" />
@@ -376,7 +376,7 @@
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Assign DisplayName="Assign SystemException (initialization)" sap:VirtualizedContainerService.HintSize="1037,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                              <Assign DisplayName="Assign SystemException (initialization)" sap:VirtualizedContainerService.HintSize="1232,60" sap2010:WorkflowViewState.IdRef="Assign_5">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="s:Exception">[SystemException]</OutArgument>
                                 </Assign.To>
@@ -384,7 +384,7 @@
                                   <InArgument x:TypeArguments="s:Exception">[Nothing]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[Config is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="1037,108" sap2010:WorkflowViewState.IdRef="If_1">
+                              <If sap2010:Annotation.AnnotationText="An uninitialized Config dictionary indicates that it is the first run of the process." Condition="[Config is Nothing]" DisplayName="If first run, read local configuration file" sap:VirtualizedContainerService.HintSize="1232,108" sap2010:WorkflowViewState.IdRef="If_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -451,14 +451,14 @@
                                   </Sequence>
                                 </If.Then>
                               </If>
-                              <Sequence DisplayName="Prepare refund master file" sap:VirtualizedContainerService.HintSize="1037,3638" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                              <Sequence DisplayName="Prepare refund master file" sap:VirtualizedContainerService.HintSize="1232,4046" sap2010:WorkflowViewState.IdRef="Sequence_40">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Sequence DisplayName="Create folder to refund master if one does not exist" sap:VirtualizedContainerService.HintSize="995,560" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                <Sequence DisplayName="Create folder to refund master if one does not exist" sap:VirtualizedContainerService.HintSize="1190,560" sap2010:WorkflowViewState.IdRef="Sequence_29">
                                   <Sequence.Variables>
                                     <Variable x:TypeArguments="x:Boolean" Name="folderExists" />
                                   </Sequence.Variables>
@@ -527,7 +527,7 @@
                                     </sap:WorkflowViewStateService.ViewState>
                                   </ui:CommentOut>
                                 </Sequence>
-                                <Sequence sap2010:Annotation.AnnotationText="Open the refund master file for the current month. If the file does not exist then roll forward the file from the previous month and remove contents from process specific sheets.&#xA;&#xA;An assumption is made that at the very least a previous months file will always exists" DisplayName="Open refund master file, copy previous if one does not exist" sap:VirtualizedContainerService.HintSize="995,2946" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                <Sequence sap2010:Annotation.AnnotationText="Open the refund master file for the current month. If the file does not exist then roll forward the file from the previous month and remove contents from process specific sheets.&#xA;&#xA;An assumption is made that at the very least a previous months file will always exists" DisplayName="Open refund master file, copy previous if one does not exist" sap:VirtualizedContainerService.HintSize="1190,3354" sap2010:WorkflowViewState.IdRef="Sequence_31">
                                   <Sequence.Variables>
                                     <Variable x:TypeArguments="x:Boolean" Name="fileExists" />
                                     <Variable x:TypeArguments="x:String" Name="previousRefundFile" />
@@ -546,7 +546,7 @@
                                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="953,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1148,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                                     <ui:MultipleAssign.AssignOperations>
                                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -582,7 +582,7 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </ui:MultipleAssign>
-                                  <ui:PathExists DisplayName="Path Exists refund file" Exists="[fileExists]" sap:VirtualizedContainerService.HintSize="953,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[refundFileFullPath]" PathType="File">
+                                  <ui:PathExists DisplayName="Path Exists refund file" Exists="[fileExists]" sap:VirtualizedContainerService.HintSize="1148,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[refundFileFullPath]" PathType="File">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -590,7 +590,7 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </ui:PathExists>
-                                  <If Condition="[fileExists = False]" DisplayName="If file doesnt exist copy file from previous month" sap:VirtualizedContainerService.HintSize="953,1595" sap2010:WorkflowViewState.IdRef="If_12">
+                                  <If Condition="[fileExists = False]" DisplayName="If file doesnt exist copy file from previous month" sap:VirtualizedContainerService.HintSize="1148,2003" sap2010:WorkflowViewState.IdRef="If_12">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -598,13 +598,16 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                     <If.Then>
-                                      <Sequence sap:VirtualizedContainerService.HintSize="563,1447" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                      <Sequence sap:VirtualizedContainerService.HintSize="755,1855" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                        <Sequence.Variables>
+                                          <Variable x:TypeArguments="x:String" Name="previousRefundFolder" />
+                                        </Sequence.Variables>
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="521,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                                        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="713,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                                           <ui:MultipleAssign.AssignOperations>
                                             <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                               <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -626,7 +629,57 @@
                                             </scg:List>
                                           </ui:MultipleAssign.AssignOperations>
                                         </ui:MultipleAssign>
-                                        <ui:PathExists DisplayName="Path Exists refund file" Exists="[fileExists]" sap:VirtualizedContainerService.HintSize="521,89" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[Path.Combine(refundFolder, previousRefundFile)]" PathType="File">
+                                        <If Condition="[Now.Year &lt;&gt; previousDate.Year]" sap:VirtualizedContainerService.HintSize="713,277" sap2010:WorkflowViewState.IdRef="If_16">
+                                          <If.Then>
+                                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+                                              <ui:MultipleAssign.AssignOperations>
+                                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">[previousRefundFolder]</OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">[Config("RefundMasterFolderPath").ToString()]</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">[previousRefundFolder]</OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">[previousRefundFolder.Replace("{year}", previousDate.Year.ToString())]</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                </scg:List>
+                                              </ui:MultipleAssign.AssignOperations>
+                                            </ui:MultipleAssign>
+                                          </If.Then>
+                                          <If.Else>
+                                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
+                                              <ui:MultipleAssign.AssignOperations>
+                                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">[previousRefundFolder]</OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">[Config("RefundMasterFolderPath").ToString()]</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+                                                    <ui:AssignOperation.To>
+                                                      <OutArgument x:TypeArguments="x:String">[previousRefundFolder]</OutArgument>
+                                                    </ui:AssignOperation.To>
+                                                    <ui:AssignOperation.Value>
+                                                      <InArgument x:TypeArguments="x:String">[previousRefundFolder.Replace("{year}", Now.Year.ToString())]</InArgument>
+                                                    </ui:AssignOperation.Value>
+                                                  </ui:AssignOperation>
+                                                </scg:List>
+                                              </ui:MultipleAssign.AssignOperations>
+                                            </ui:MultipleAssign>
+                                          </If.Else>
+                                        </If>
+                                        <ui:PathExists DisplayName="Path Exists refund file" Exists="[fileExists]" sap:VirtualizedContainerService.HintSize="713,89" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[Path.Combine(previousRefundFolder, previousRefundFile)]" PathType="File">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -634,7 +687,7 @@
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:PathExists>
-                                        <If sap2010:Annotation.AnnotationText="If file for current month does not exist then there are no file to roll from and therefore the process will terminate" Condition="[fileExists = False]" sap:VirtualizedContainerService.HintSize="521,556" sap2010:WorkflowViewState.IdRef="If_15">
+                                        <If sap2010:Annotation.AnnotationText="If file for current month does not exist then there are no file to roll from and therefore the process will terminate" Condition="[fileExists = False]" sap:VirtualizedContainerService.HintSize="713,556" sap2010:WorkflowViewState.IdRef="If_15">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -660,23 +713,17 @@
                                               </Assign>
                                               <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SendMail workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" UnSafe="False" WorkflowFileName="General\SendMail.xaml">
                                                 <ui:InvokeWorkflowFile.Arguments>
-                                                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
-                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;BusinessRuleExceptionEmailSubject&quot;).ToString" />
-                                                  </InArgument>
-                                                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">
-                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="failureReason" />
-                                                  </InArgument>
-                                                  <InArgument x:TypeArguments="s:String[]" x:Key="in_Attachments">
-                                                    <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="Nothing" />
-                                                  </InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[Config("BusinessRuleExceptionEmailSubject").ToString]</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">[failureReason]</InArgument>
+                                                  <InArgument x:TypeArguments="s:String[]" x:Key="in_Attachments">[Nothing]</InArgument>
                                                 </ui:InvokeWorkflowFile.Arguments>
                                               </ui:InvokeWorkflowFile>
                                               <TerminateWorkflow DisplayName="Terminate Workflow" Exception="[new BusinessRuleException(&quot;There is no Nike Refund Mater file for the current month and there is no refund master files from the previous month to roll from, please ensure that a previous file is available to roll from&quot;)]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="[failureReason]" />
                                             </Sequence>
                                           </If.Then>
                                         </If>
-                                        <ui:CopyFile ContinueOnError="{x:Null}" Destination="[refundFileFullPath]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="521,157" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="[Path.Combine(refundFolder, previousRefundFile)]" />
-                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ReturnWorkbook workflow" sap:VirtualizedContainerService.HintSize="521,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
+                                        <ui:CopyFile ContinueOnError="{x:Null}" Destination="[refundFileFullPath]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="713,157" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="[Path.Combine(previousRefundFolder, previousRefundFile)]" />
+                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ReturnWorkbook workflow" sap:VirtualizedContainerService.HintSize="713,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
                                             <InArgument x:TypeArguments="x:String" x:Key="in_File">[refundFileFullPath]</InArgument>
                                             <OutArgument x:TypeArguments="ui:WorkbookApplication" x:Key="out_Workbook">[refundMasterWorkbook]</OutArgument>
@@ -684,16 +731,40 @@
                                             <InArgument x:TypeArguments="x:String" x:Key="in_EditPassword">[string.Empty]</InArgument>
                                           </ui:InvokeWorkflowFile.Arguments>
                                         </ui:InvokeWorkflowFile>
-                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ClearSheets workflow" sap:VirtualizedContainerService.HintSize="521,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ClearSheets.xaml">
+                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_RemoveAllRowsExceptLast workflow" sap:VirtualizedContainerService.HintSize="713,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="RefundMaster\RMF_RemoveAllRowsExceptLast.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="s:String[]" x:Key="in_Sheets">[{"Refunds - FIN|L2:O2-L3|A2","MR-FIN|K2:Q2-K3|A2","Cancellation|M2:N2-M3|A2"}]</InArgument>
-                                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_Workbook">[refundMasterWorkbook]</InArgument>
+                                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_WorkbookApplication">
+                                              <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="refundMasterWorkbook" />
+                                            </InArgument>
                                           </ui:InvokeWorkflowFile.Arguments>
                                         </ui:InvokeWorkflowFile>
+                                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="713,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                                          <ui:CommentOut.Body>
+                                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,204" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ClearSheets workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ClearSheets.xaml">
+                                                <ui:InvokeWorkflowFile.Arguments>
+                                                  <InArgument x:TypeArguments="s:String[]" x:Key="in_Sheets">[{"Refunds - FIN|L2:O2-L3|A2","MR-FIN|K2:Q2-K3|A2","Cancellation|M2:N2-M3|A2"}]</InArgument>
+                                                  <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_Workbook">[refundMasterWorkbook]</InArgument>
+                                                </ui:InvokeWorkflowFile.Arguments>
+                                              </ui:InvokeWorkflowFile>
+                                            </Sequence>
+                                          </ui:CommentOut.Body>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:CommentOut>
                                       </Sequence>
                                     </If.Then>
                                     <If.Else>
-                                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ReturnWorkbook workflow" sap:VirtualizedContainerService.HintSize="345,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
+                                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ReturnWorkbook workflow" sap:VirtualizedContainerService.HintSize="348,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
                                         <ui:InvokeWorkflowFile.Arguments>
                                           <InArgument x:TypeArguments="x:String" x:Key="in_File">[refundFileFullPath]</InArgument>
                                           <OutArgument x:TypeArguments="ui:WorkbookApplication" x:Key="out_Workbook">[refundMasterWorkbook]</OutArgument>
@@ -703,7 +774,7 @@
                                       </ui:InvokeWorkflowFile>
                                     </If.Else>
                                   </If>
-                                  <Assign sap:VirtualizedContainerService.HintSize="953,60" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                  <Assign sap:VirtualizedContainerService.HintSize="1148,60" sap2010:WorkflowViewState.IdRef="Assign_28">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:Boolean">[refundMasterWorkbook.Visible]</OutArgument>
                                     </Assign.To>
@@ -711,13 +782,13 @@
                                       <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_GetLastFraudEntry workflow" sap:VirtualizedContainerService.HintSize="953,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="RefundMaster\RMF_GetLastFraudEntry.xaml">
+                                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_GetLastFraudEntry workflow" sap:VirtualizedContainerService.HintSize="1148,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="RefundMaster\RMF_GetLastFraudEntry.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
                                       <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_Workbook">[refundMasterWorkbook]</InArgument>
                                       <OutArgument x:TypeArguments="sd:DataRow" x:Key="out_LastFraudEntry">[lastFraudEntry]</OutArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
                                   </ui:InvokeWorkflowFile>
-                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="953,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+                                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1148,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
                                     <ui:MultipleAssign.AssignOperations>
                                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">

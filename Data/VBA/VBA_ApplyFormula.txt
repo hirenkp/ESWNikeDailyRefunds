@@ -1,0 +1,3 @@
+Public Sub ApplyFormula(sheet As String, range As String, formula As String)
+	Sheets(sheet).Range(range).Formula = formula     
+End Sub

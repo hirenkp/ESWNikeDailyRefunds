@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410,1488</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1120,1488</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -154,10 +154,10 @@
         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SendMail workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="General\SendMail.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ProcessCompleteEmailSubject&quot;).ToString" />
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ProcessCompletedEmailSubject&quot;).ToString" />
             </InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_Body">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ProcessCompleteEmailBody&quot;).ToString" />
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ProcessComepletedEmailBody&quot;).ToString" />
             </InArgument>
             <InArgument x:TypeArguments="s:String[]" x:Key="in_Attachments">
               <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{in_Config(&quot;TransactionAuditFile&quot;).ToString}" />
