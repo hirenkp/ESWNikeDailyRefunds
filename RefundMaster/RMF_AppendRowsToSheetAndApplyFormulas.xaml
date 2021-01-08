@@ -6,12 +6,12 @@
     <x:Property sap2010:Annotation.AnnotationText="Template in the format [start column][start row]:[end column][end row] A1:S7. This template is stored in Data\Input\PaymentTransactionsType.xlsx and represents the range that contains the Refund Date column  for the newly added rows" Name="in_RefundDateColumnTemplate" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="This is an array that contains two Long values the first is the start row of the new added transactions and the second is the end row of the newly added transactions." Name="out_NewlyAddedRowsRange" Type="OutArgument(s:Int64[])" />
     <x:Property sap2010:Annotation.AnnotationText="Reference to workbook application to the Nike Master Refund file" Name="in_MasterFileWorkbook" Type="InArgument(ui:WorkbookApplication)" />
-    <x:Property sap2010:Annotation.AnnotationText="We are using esisting instance of workbook application, so excel filename not required" Name="in_MasterFile" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="The filename is required for the studioX excel activity" Name="in_MasterFile" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1426,5313</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>905,5213</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AppendRowsToSheetInExisitingWorkbook_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -78,7 +78,6 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="AppendRowsToSheetInExisitingWorkbook" sap:VirtualizedContainerService.HintSize="915,5108" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -105,7 +104,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ReturnWorkbook workflow" sap:VirtualizedContainerService.HintSize="348,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ReturnWorkbook workflow" sap:VirtualizedContainerService.HintSize="345,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_File">[in_MasterFile]</InArgument>
             <OutArgument x:TypeArguments="ui:WorkbookApplication" x:Key="out_Workbook">[workbook]</OutArgument>
@@ -244,7 +243,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
             <ui:ExcelWriteCell Cell="[in_RefundDateColumnTemplate(0) + appendRangeRowStart.ToString()]" DisplayName="Write Cell current date in appropriate column" sap:VirtualizedContainerService.HintSize="797,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[in_Sheet]" Text="[Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
-            <ueab:ExcelApplicationCard Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="797,1304" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" WorkbookPath="C:\ESW\CustomerService2013\VSD\Refunds\Refund Files\Nike\2021\1 2021 Nike Master Refunds.xlsb">
+            <ueab:ExcelApplicationCard Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="797,1304" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" WorkbookPath="[in_MasterFile]">
               <ueab:ExcelApplicationCard.Body>
                 <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                   <ActivityAction.Argument>

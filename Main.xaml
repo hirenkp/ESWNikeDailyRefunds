@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1136,1000</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>830,860</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -236,12 +236,27 @@
                       </Assign>
                       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                          <OutArgument x:TypeArguments="ui:BusinessRuleException" x:Key="out_BusinessException">[BusinessException]</OutArgument>
-                          <OutArgument x:TypeArguments="s:Exception" x:Key="out_SystemException">[SystemException]</OutArgument>
-                          <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">[refundMasterWorkbook]</InArgument>
-                          <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_TransactionAuditWorkbook">[transactionAuditFileWorkbook]</InArgument>
+                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
+                            <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="TransactionItem" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="ui:BusinessRuleException" x:Key="out_BusinessException">
+                            <mva:VisualBasicReference x:TypeArguments="ui:BusinessRuleException" ExpressionText="BusinessException" />
+                          </OutArgument>
+                          <OutArgument x:TypeArguments="s:Exception" x:Key="out_SystemException">
+                            <mva:VisualBasicReference x:TypeArguments="s:Exception" ExpressionText="SystemException" />
+                          </OutArgument>
+                          <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">
+                            <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="refundMasterWorkbook" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_TransactionAuditWorkbook">
+                            <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="transactionAuditFileWorkbook" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_MasterFile">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(refundFolder,refundFile)" />
+                          </InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </Sequence>
@@ -354,10 +369,6 @@
                     <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,103" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
                         <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="1312,5338" sap2010:WorkflowViewState.IdRef="TryCatch_2">
-                          <TryCatch.Variables>
-                            <Variable x:TypeArguments="x:String" Name="refundFile" />
-                            <Variable x:TypeArguments="x:String" Name="refundFolder" />
-                          </TryCatch.Variables>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -733,9 +744,7 @@
                                         </ui:InvokeWorkflowFile>
                                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_RemoveAllRowsExceptLast workflow" sap:VirtualizedContainerService.HintSize="713,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="RefundMaster\RMF_RemoveAllRowsExceptLast.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_WorkbookApplication">
-                                              <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="refundMasterWorkbook" />
-                                            </InArgument>
+                                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_WorkbookApplication">[refundMasterWorkbook]</InArgument>
                                           </ui:InvokeWorkflowFile.Arguments>
                                         </ui:InvokeWorkflowFile>
                                         <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="713,51" sap2010:WorkflowViewState.IdRef="CommentOut_3">
@@ -866,7 +875,7 @@
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:CommentOut>
                               <ui:BuildDataTable DataTable="[dtTransactionAudit]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="1037,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Date&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Order_x0020_No_x002C_&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Return_x0020_No.&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Trans._x0020_Type&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Payment_x0020_Type&quot; msdata:Caption=&quot;&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Amount&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Approval_x0020_Status&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;20&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke LoadTransactions workflow" sap:VirtualizedContainerService.HintSize="1037,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="LoadTransactions.xaml">
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke LoadTransactions workflow" sap:VirtualizedContainerService.HintSize="1232,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="LoadTransactions.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TransactionData">[TransactionData]</InOutArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
@@ -877,7 +886,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:InvokeWorkflowFile>
-                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1037,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                              <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1232,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
                                 <ui:MultipleAssign.AssignOperations>
                                   <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                                     <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
@@ -905,7 +914,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </ui:MultipleAssign>
-                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke InitiAllApplications workflow" sap:VirtualizedContainerService.HintSize="1037,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\InitAllApplications.xaml">
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke InitiAllApplications workflow" sap:VirtualizedContainerService.HintSize="1232,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\InitAllApplications.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
@@ -1133,6 +1142,8 @@
       <Variable x:TypeArguments="ui:WorkbookApplication" Name="refundMasterWorkbook" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtTransactionAudit" />
       <Variable x:TypeArguments="ui:WorkbookApplication" Name="transactionAuditFileWorkbook" />
+      <Variable x:TypeArguments="x:String" Name="refundFile" />
+      <Variable x:TypeArguments="x:String" Name="refundFolder" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>

@@ -6,11 +6,12 @@
     <x:Property Name="out_SystemException" Type="OutArgument(s:Exception)" />
     <x:Property Name="in_MasterFileWorkbook" Type="InArgument(ui:WorkbookApplication)" />
     <x:Property Name="in_TransactionAuditWorkbook" Type="InArgument(ui:WorkbookApplication)" />
+    <x:Property Name="in_MasterFile" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1120,1086</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1053,1193</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessRefunds_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -77,8 +78,8 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="ProcessRefunds" sap:VirtualizedContainerService.HintSize="1063,1088" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -99,7 +100,7 @@
         <av:Point x:Key="ShapeLocation">580,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
         <av:PointCollection x:Key="ConnectorLocation">610,77.5 610,127.5</av:PointCollection>
-        <x:Double x:Key="Width">1028.6416666666667</x:Double>
+        <x:Double x:Key="Width">1028.6416666666669</x:Double>
         <x:Double x:Key="Height">1051.5</x:Double>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
@@ -124,11 +125,11 @@
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">510,189</av:Point>
-              <av:Size x:Key="ShapeSize">200,82</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">610,271 610,301 610.141666666667,301 610.141666666667,366.5</av:PointCollection>
+              <av:Size x:Key="ShapeSize">200,79</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">610,268 610,298 610.141666666667,298 610.141666666667,366.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <e:CSP_SearchFinancialTransactions in_ProcessingStatus="{x:Null}" sap2010:Annotation.AnnotationText="Search transactions based on incoming Payment Type in the transaction item" sap:VirtualizedContainerService.HintSize="200,82" sap2010:WorkflowViewState.IdRef="CSP_SearchFinancialTransactions_1" in_AuthorisationSatuses="[CInt(in_Config(&quot;AuthorisationStatuses&quot;))]" in_Brand="[in_Config(&quot;Brand&quot;).ToString()]" in_DelayBetweenOpeningConsoleAndSettingDate="[CInt(in_Config(&quot;ConsoleToDateDelay&quot;))]" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_FromDate="[in_Config(&quot;FromDate&quot;).ToString()]" in_PaymentType="[in_TransactionItem(&quot;Type&quot;).ToString()]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" in_ToDate="[in_Config(&quot;ToDate&quot;).ToString()]" in_TransactionType="[in_Config(&quot;TransactionType&quot;).ToString()]" out_BusinessException="[out_BusinessException]" out_SearchResults="[dtTransactions]" out_SystemException="[out_SystemException]">
+          <e:CSP_SearchFinancialTransactions in_ProcessingStatus="{x:Null}" sap2010:Annotation.AnnotationText="Search transactions based on incoming Payment Type in the transaction item" sap:VirtualizedContainerService.HintSize="200,79" sap2010:WorkflowViewState.IdRef="CSP_SearchFinancialTransactions_1" in_AuthorisationSatuses="[CInt(in_Config(&quot;AuthorisationStatuses&quot;))]" in_Brand="[in_Config(&quot;Brand&quot;).ToString()]" in_DelayBetweenOpeningConsoleAndSettingDate="[CInt(in_Config(&quot;ConsoleToDateDelay&quot;))]" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_FromDate="[in_Config(&quot;FromDate&quot;).ToString()]" in_PaymentType="[in_TransactionItem(&quot;Type&quot;).ToString()]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" in_ToDate="[in_Config(&quot;ToDate&quot;).ToString()]" in_TransactionType="[in_Config(&quot;TransactionType&quot;).ToString()]" out_BusinessException="[out_BusinessException]" out_SearchResults="[dtTransactions]" out_SystemException="[out_SystemException]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -136,10 +137,7 @@
             </sap:WorkflowViewStateService.ViewState>
           </e:CSP_SearchFinancialTransactions>
           <FlowStep.Next>
-            <FlowDecision x:Name="__ReferenceID16" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_8">
-              <FlowDecision.Condition>
-                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="out_BusinessException is Nothing And out_SystemException is Nothing" />
-              </FlowDecision.Condition>
+            <FlowDecision x:Name="__ReferenceID16" Condition="[out_BusinessException is Nothing And out_SystemException is Nothing]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_8">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -156,7 +154,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <av:Point x:Key="ShapeLocation">370,546.5</av:Point>
                       <av:Size x:Key="ShapeSize">160,87</av:Size>
-                      <av:PointCollection x:Key="TrueConnector">370,590 340,590 340,594.5 260,594.5</av:PointCollection>
+                      <av:PointCollection x:Key="TrueConnector">370,590 260,590</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <FlowDecision.True>
@@ -164,11 +162,11 @@
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">60,498.5</av:Point>
-                          <av:Size x:Key="ShapeSize">200,192</av:Size>
-                          <av:PointCollection x:Key="ConnectorLocation">160,690.5 160,731.5</av:PointCollection>
+                          <av:Size x:Key="ShapeSize">200,183</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">160,681.5 160,731.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence sap2010:Annotation.AnnotationText="Append the rows extracted form the search results and apply formulas.&#xA;Once the formulas have been applied search specific columns for 'Fraud' or 'Bank Details Changed'" DisplayName="Append transactions and search for fraud" sap:VirtualizedContainerService.HintSize="200,192" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                      <Sequence sap2010:Annotation.AnnotationText="Append the rows extracted form the search results and apply formulas.&#xA;Once the formulas have been applied search specific columns for 'Fraud' or 'Bank Details Changed'" DisplayName="Append transactions and search for fraud" sap:VirtualizedContainerService.HintSize="421,413" sap2010:WorkflowViewState.IdRef="Sequence_1">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -177,13 +175,27 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_AppendRowsToSheet workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="RefundMaster\RMF_AppendRowsToSheetAndApplyFormulas.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Data">[dtTransactions]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">[in_TransactionItem("Sheet").ToString]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_FormulaRangeTemplate">[in_TransactionItem("Formula Range Template").ToString()]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_RefundDateColumnTemplate">[in_TransactionItem("Refund Date Column Template").ToString()]</InArgument>
-                            <OutArgument x:TypeArguments="s:Int64[]" x:Key="out_NewlyAddedRowsRange">[newlyAddedRowsRange]</OutArgument>
-                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">[in_MasterFileWorkbook]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_MasterFile">[string.Empty]</InArgument>
+                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_Data">
+                              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtTransactions" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Sheet&quot;).ToString" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FormulaRangeTemplate">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Formula Range Template&quot;).ToString()" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RefundDateColumnTemplate">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Refund Date Column Template&quot;).ToString()" />
+                            </InArgument>
+                            <OutArgument x:TypeArguments="s:Int64[]" x:Key="out_NewlyAddedRowsRange">
+                              <mva:VisualBasicReference x:TypeArguments="s:Int64[]" ExpressionText="newlyAddedRowsRange" />
+                            </OutArgument>
+                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">
+                              <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="in_MasterFileWorkbook" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_MasterFile">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_MasterFile" />
+                            </InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_SearchForFraudulentTransactons workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="RefundMaster\RMF_SearchForFraudulentTransactons.xaml">
@@ -553,7 +565,7 @@
                                   <av:Size x:Key="ShapeSize">160,87</av:Size>
                                   <x:String x:Key="FalseLabel">No</x:String>
                                   <x:String x:Key="TrueLabel">Yes</x:String>
-                                  <av:PointCollection x:Key="TrueConnector">80,1008 50,1008 50,594.5 60,594.5</av:PointCollection>
+                                  <av:PointCollection x:Key="TrueConnector">80,1008 50,1008 50,590 60,590</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </FlowDecision>
@@ -565,10 +577,7 @@
                 </FlowDecision>
               </FlowDecision.True>
               <FlowDecision.False>
-                <FlowDecision x:Name="__ReferenceID17" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_7">
-                  <FlowDecision.Condition>
-                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="out_BusinessException IsNot Nothing" />
-                  </FlowDecision.Condition>
+                <FlowDecision x:Name="__ReferenceID17" Condition="[out_BusinessException IsNot Nothing]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="79,87" sap2010:WorkflowViewState.IdRef="FlowDecision_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
