@@ -7,10 +7,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1136,615</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1024,1187</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AuditTransactions_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="26">
+    <scg:List x:TypeArguments="x:String" Capacity="52">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -37,10 +37,12 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -68,11 +70,13 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Write the transactions processed to the audit table to for manual check" DisplayName="AuditTransactions" sap:VirtualizedContainerService.HintSize="376,348" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Write the transactions processed to the audit table to for manual check" DisplayName="AuditTransactions" sap:VirtualizedContainerService.HintSize="663,1022" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtAudit" />
+      <Variable x:TypeArguments="x:Boolean" Name="auditFileExisits" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -80,7 +84,21 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:FilterDataTable DataTable="[in_ProcessedTransactions]" DisplayName="Filter Data Table" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtAudit]" SelectColumnsMode="Remove">
+    <ui:PathExists DisplayName="Path Exists" Exists="[auditFileExisits]" sap:VirtualizedContainerService.HintSize="621,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_TransactionAuditFile]" PathType="File" />
+    <If Condition="[auditFileExisits = False]" sap:VirtualizedContainerService.HintSize="621,516" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="476,368" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="434,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[Path.GetDirectoryName(in_TransactionAuditFile)]" />
+          <ui:CopyFile ContinueOnError="{x:Null}" Destination="[in_TransactionAuditFile]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="Data\Output\Audit_NikeDaily_Transactions.xlsx" />
+        </Sequence>
+      </If.Then>
+    </If>
+    <ui:FilterDataTable DataTable="[in_ProcessedTransactions]" DisplayName="Filter Data Table" sap:VirtualizedContainerService.HintSize="621,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtAudit]" SelectColumnsMode="Remove">
       <ui:FilterDataTable.Filters>
         <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
           <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
@@ -92,6 +110,6 @@
         </scg:List>
       </ui:FilterDataTable.SelectColumns>
     </ui:FilterDataTable>
-    <ui:AppendRange DataTable="[dtAudit]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="Sheet1" WorkbookPath="[in_TransactionAuditFile]" />
+    <ui:AppendRange DataTable="[dtAudit]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="621,115" sap2010:WorkflowViewState.IdRef="AppendRange_1" SheetName="Sheet1" WorkbookPath="[in_TransactionAuditFile]" />
   </Sequence>
 </Activity>

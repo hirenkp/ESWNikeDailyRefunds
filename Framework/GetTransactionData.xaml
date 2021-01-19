@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1120,1488</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1136,1388</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -160,7 +160,7 @@
               <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ProcessComepletedEmailBody&quot;).ToString" />
             </InArgument>
             <InArgument x:TypeArguments="s:String[]" x:Key="in_Attachments">
-              <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{in_Config(&quot;TransactionAuditFile&quot;).ToString}" />
+              <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{in_Config(&quot;TransactionAuditFile&quot;).ToString().Replace(&quot;{year}&quot;, now.Year.ToString).Replace(&quot;{month}&quot;, now.Month.ToString(&quot;00&quot;))}" />
             </InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
