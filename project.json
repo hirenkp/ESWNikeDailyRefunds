@@ -3,7 +3,7 @@
   "description": "",
   "main": "Main.xaml",
   "dependencies": {
-    "ESWCustomerServicesPortal": "[1.0.3]",
+    "ESWCustomerServicesPortal": "[1.0.9]",
     "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.Mail.Activities": "[1.9.3]",
     "UiPath.System.Activities": "[20.10.3]",
