@@ -13,7 +13,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "20.10.2.0",
-  "projectVersion": "1.0.6",
+  "projectVersion": "1.0.7",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
@@ -35,7 +35,9 @@
       "privateWorkflows": []
     },
     "processOptions": {
-      "ignoredFiles": []
+      "ignoredFiles": [
+        "Backups/ProcessRefunds.xaml"
+      ]
     },
     "fileInfoCollection": [],
     "modernBehavior": false
