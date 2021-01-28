@@ -3,7 +3,7 @@
   "description": "",
   "main": "Main.xaml",
   "dependencies": {
-    "ESWCustomerServicesPortal": "[1.0.14]",
+    "ESWCustomerServicesPortal": "[1.0.16]",
     "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.Mail.Activities": "[1.9.3]",
     "UiPath.System.Activities": "[20.10.3]",
@@ -36,7 +36,12 @@
     },
     "processOptions": {
       "ignoredFiles": [
-        "Backups/ProcessRefunds.xaml"
+        "Backups/ProcessRefunds.xaml",
+        "Backups/ProcessRefunds_1.xaml",
+        "Backups/ProcessRefunds_2.xaml",
+        "Backups/RMF_SearchForFraudulentTransactons.xaml",
+        "Backups/SheetExtractionTest.xaml",
+        "Backups/RMF_SearchForFraudulentTransactons - Copy (1).xaml"
       ]
     },
     "fileInfoCollection": [],
