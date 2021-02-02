@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1136,1398</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1117,1298</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>RMF_RemoveAllRowsExceptLast_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -73,7 +73,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtSheets]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="734,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet Formulas" WorkbookPath="Data\Input\PaymentTransactionTypes.xlsx" />
-    <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" DisplayName="Excel Application Scope" ExistingWorkbook="[in_WorkbookApplication]" sap:VirtualizedContainerService.HintSize="734,1014" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000">
+    <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" AutoSave="False" DisplayName="Excel Application Scope" ExistingWorkbook="[in_WorkbookApplication]" sap:VirtualizedContainerService.HintSize="734,1014" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -111,12 +111,8 @@
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ConvertNumberToColumn workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ConvertNumberToColumn.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <OutArgument x:TypeArguments="x:String" x:Key="out_ColumnName">
-                                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="endColumn" />
-                              </OutArgument>
-                              <InArgument x:TypeArguments="x:Int32" x:Key="in_ColumnNumber">
-                                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="dtSheetRows.Columns.Count" />
-                              </InArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_ColumnName">[endColumn]</OutArgument>
+                              <InArgument x:TypeArguments="x:Int32" x:Key="in_ColumnNumber">[dtSheetRows.Columns.Count]</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
                           <ui:ExcelDeleteRange DisplayName="Delete Range" sap:VirtualizedContainerService.HintSize="379,22" sap2010:WorkflowViewState.IdRef="ExcelDeleteRange_1" Range="[&quot;A2:&quot; + endColumn + (dtSheetRows.Rows.Count).ToString()]" SheetName="[row(&quot;Sheet&quot;).ToString]" ShiftCells="True" ShiftOption="EntireRow" />
