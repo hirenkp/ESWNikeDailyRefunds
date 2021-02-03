@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AppendRowsToSheetInExisitingWorkbook" this:AppendRowsToSheetInExisitingWorkbook.in_Sheet="Fraud" this:AppendRowsToSheetInExisitingWorkbook.in_File="[string.Empty]" this:AppendRowsToSheetInExisitingWorkbook.in_Workbook="[Nothing]" this:AppendRowsToSheetInExisitingWorkbook.in_SaveFile="True" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Excel_AppendRowsToSheet" this:Excel_AppendRowsToSheet.in_Sheet="Fraud" this:Excel_AppendRowsToSheet.in_File="[string.Empty]" this:Excel_AppendRowsToSheet.in_Workbook="[Nothing]" this:Excel_AppendRowsToSheet.in_SaveFile="True" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Data" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_Sheet" Type="InArgument(x:String)" />
@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1136,1766</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1046,1997</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AppendRowsToSheetInExisitingWorkbook_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -45,7 +45,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -72,9 +72,12 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AppendRowsToSheetInExisitingWorkbook" sap:VirtualizedContainerService.HintSize="694,1661" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Excel_AppendRowsToSheet" sap:VirtualizedContainerService.HintSize="697,1792" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:WorkbookApplication" Name="workbook" />
     </Sequence.Variables>
@@ -83,9 +86,10 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[in_Workbook Is Nothing]" sap:VirtualizedContainerService.HintSize="652,260" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="655,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Entering - Excel_AppendRowsToSheet&quot;]" />
+    <If Condition="[in_Workbook Is Nothing]" sap:VirtualizedContainerService.HintSize="655,260" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ReturnWorkbook workflow" sap:VirtualizedContainerService.HintSize="345,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ReturnWorkbook workflow" sap:VirtualizedContainerService.HintSize="348,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_File">[in_File]</InArgument>
             <OutArgument x:TypeArguments="ui:WorkbookApplication" x:Key="out_Workbook">[workbook]</OutArgument>

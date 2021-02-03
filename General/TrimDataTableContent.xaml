@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1120,768</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1046,899</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TrimDataTableContent_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -67,22 +67,21 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Trim Data Table Content" sap:VirtualizedContainerService.HintSize="526,603" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Trim Data Table Content" sap:VirtualizedContainerService.HintSize="526,734" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Default="0" Name="colIndex" />
-      <Variable x:TypeArguments="scg:List(x:Int32)" Name="ListOfStringColumns">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="scg:List(x:Int32)" ExpressionText="new List(of Integer)" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="scg:List(x:Int32)" Default="[new List(of Integer)]" Name="ListOfStringColumns" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Entering - TrimDataTableContent&quot;]" />
     <If Condition="[io_DataTable IsNot Nothing]" sap:VirtualizedContainerService.HintSize="484,511" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="242,363" sap2010:WorkflowViewState.IdRef="Sequence_2">

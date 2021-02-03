@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>955,852</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1046,1154</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AuditTransactions_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -74,7 +74,7 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Write the transactions processed to the audit table to for manual check" DisplayName="AuditTransactions" sap:VirtualizedContainerService.HintSize="526,687" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Write the transactions processed to the audit table to for manual check" DisplayName="AuditTransactions" sap:VirtualizedContainerService.HintSize="526,949" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="auditFileExisits" />
     </Sequence.Variables>
@@ -84,6 +84,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Witing to audit log&quot;]" />
     <If Condition="[in_GenerateAudit]" sap:VirtualizedContainerService.HintSize="484,564" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="242,416" sap2010:WorkflowViewState.IdRef="Sequence_3">
@@ -157,5 +158,6 @@
         </Sequence>
       </If.Then>
     </If>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Loading Transactions...&quot;]" />
   </Sequence>
 </Activity>

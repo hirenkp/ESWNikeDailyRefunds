@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1117,1298</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1046,1529</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>RMF_RemoveAllRowsExceptLast_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -40,7 +40,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="19">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -60,9 +60,19 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="RMF_RemoveAllRowsExceptLast" sap:VirtualizedContainerService.HintSize="776,1233" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="RMF_RemoveAllRowsExceptLast" sap:VirtualizedContainerService.HintSize="776,1364" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dtSheets" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtSheetRows" />
@@ -72,6 +82,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="734,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Entering - RMF_RemoveAllRowsExceptLast&quot;]" />
     <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtSheets]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="734,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet Formulas" WorkbookPath="Data\Input\PaymentTransactionTypes.xlsx" />
     <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" AutoSave="False" DisplayName="Excel Application Scope" ExistingWorkbook="[in_WorkbookApplication]" sap:VirtualizedContainerService.HintSize="734,1014" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000">
       <ui:ExcelApplicationScope.Body>

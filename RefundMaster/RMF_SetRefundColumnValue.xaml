@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1120,717</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1046,864</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>RFM_SetRefundColumnValue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -68,15 +68,17 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="RFM_SetRefundColumnValue" sap:VirtualizedContainerService.HintSize="621,528" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="RFM_SetRefundColumnValue" sap:VirtualizedContainerService.HintSize="621,659" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="579,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Entering - RFM_SetRefundColumnValue&quot;]" />
     <If Condition="[in_Sheet = &quot;MR-FIN&quot;]" sap:VirtualizedContainerService.HintSize="579,436" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope" ExistingWorkbook="[in_RefundMasterWorkbook]" sap:VirtualizedContainerService.HintSize="434,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000">

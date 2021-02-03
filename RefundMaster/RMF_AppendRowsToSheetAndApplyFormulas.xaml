@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="AppendRowsToSheetInExisitingWorkbook" this:AppendRowsToSheetInExisitingWorkbook.in_MasterFileWorkbook="[Nothing]" this:AppendRowsToSheetInExisitingWorkbook.in_MasterFile="[string.Empty]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="RMF_AppendRowsToSheetAndApplyFormulas" this:RMF_AppendRowsToSheetAndApplyFormulas.in_MasterFileWorkbook="[Nothing]" this:RMF_AppendRowsToSheetAndApplyFormulas.in_MasterFile="[string.Empty]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="A datatable containing, the transactions extracted from the search results in CSP." Name="in_Data" Type="InArgument(sd:DataTable)" />
     <x:Property sap2010:Annotation.AnnotationText="The sheet in which to added the etracted transactions from CSP" Name="in_Sheet" Type="InArgument(x:String)" />
@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1117,5173</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1046,5404</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AppendRowsToSheetInExisitingWorkbook_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -50,7 +50,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -78,9 +78,11 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AppendRowsToSheetInExisitingWorkbook" sap:VirtualizedContainerService.HintSize="915,5108" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AppendRowsToSheetInExisitingWorkbook" sap:VirtualizedContainerService.HintSize="915,5239" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:WorkbookApplication" Name="workbook" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtFormulas" />
@@ -90,6 +92,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="873,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Entering - RMF_AppendRowsToSheetAndApplyFormulas&quot;]" />
     <ui:ReadRange Range="{x:Null}" AddHeaders="True" sap2010:Annotation.AnnotationText="Read all the formula in the formulas page that need to be added to the formula cells for each row" DataTable="[dtFormulas]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="873,129" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet Formulas" WorkbookPath="Data\Input\PaymentTransactionTypes.xlsx">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
