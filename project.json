@@ -3,7 +3,7 @@
   "description": "",
   "main": "Main.xaml",
   "dependencies": {
-    "ESWCustomerServicesPortal": "[1.0.21]",
+    "ESWCustomerServicesPortal": "[1.0.24]",
     "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.Mail.Activities": "[1.9.3]",
     "UiPath.System.Activities": "[20.10.3]",
@@ -13,7 +13,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "20.10.2.0",
-  "projectVersion": "1.0.20",
+  "projectVersion": "1.0.21",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
@@ -50,7 +50,8 @@
         "Data/Input/PaymentTransactionTypes - Both.xlsx",
         "Data/Input/PaymentTransactionTypes - Prod.xlsx",
         "Data/Input/PaymentTransactionTypes - Refund Fins Only.xlsx",
-        "Data/Input/PaymentTransactionTypes - UAT.xlsx"
+        "Data/Input/PaymentTransactionTypes - UAT.xlsx",
+        "Backups/ProcessRefunds_3.xaml"
       ]
     },
     "fileInfoCollection": [],
