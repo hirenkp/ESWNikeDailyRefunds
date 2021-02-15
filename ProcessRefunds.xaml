@@ -14,7 +14,7 @@
   <sap:VirtualizedContainerService.HintSize>1345,1847</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessRefunds_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="66">
+    <scg:List x:TypeArguments="x:String" Capacity="37">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -55,7 +55,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -100,6 +100,7 @@
       <Variable x:TypeArguments="x:Int32" Default="0" Name="loopIndex" />
       <Variable x:TypeArguments="x:Boolean" Name="moreTransactionsToApprove" />
       <Variable x:TypeArguments="x:Boolean" Name="repeatingApproval" />
+      <Variable x:TypeArguments="x:String" Name="dtOutput" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -196,10 +197,10 @@
                   </Sequence>
                 </TryCatch.Try>
                 <TryCatch.Catches>
-                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,283" sap2010:WorkflowViewState.IdRef="Catch`1_16">
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_16">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -207,7 +208,7 @@
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                       </ActivityAction.Argument>
-                      <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                      <Sequence sap:VirtualizedContainerService.HintSize="304,211" sap2010:WorkflowViewState.IdRef="Sequence_31">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -370,19 +371,11 @@
                                                 </e:CSP_SelectTransactionsForProcessing>
                                                 <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                                                   <ui:InvokeWorkflowFile.Arguments>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
-                                                      <Literal x:TypeArguments="x:String">ProcessedTransactions_Screenshots</Literal>
-                                                    </InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
                                                     <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath" />
-                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Prefix">
-                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Empty" />
-                                                    </InArgument>
-                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Suffix">
-                                                      <Literal x:TypeArguments="x:String">CSP_SelectAllTrns_ForAuthorisation</Literal>
-                                                    </InArgument>
-                                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_TakeScreenshot">
-                                                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(in_Config(&quot;TakeProcessedTransactionsSnapshot&quot;))" />
-                                                    </InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Prefix">[String.Empty]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String" x:Key="in_Suffix">CSP_SelectAllTrns_ForAuthorisation</InArgument>
+                                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_TakeScreenshot">[CBool(in_Config("TakeProcessedTransactionsSnapshot"))]</InArgument>
                                                   </ui:InvokeWorkflowFile.Arguments>
                                                 </ui:InvokeWorkflowFile>
                                               </Sequence>
@@ -503,19 +496,11 @@
                                                             </e:CSP_SelectTransactionsForProcessing>
                                                             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                                                               <ui:InvokeWorkflowFile.Arguments>
-                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
-                                                                  <Literal x:TypeArguments="x:String">ProcessedTransactions_Screenshots</Literal>
-                                                                </InArgument>
+                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
                                                                 <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath" />
-                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Prefix">
-                                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Empty" />
-                                                                </InArgument>
-                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Suffix">
-                                                                  <Literal x:TypeArguments="x:String">CSP_UnselectTrns_ToReject</Literal>
-                                                                </InArgument>
-                                                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_TakeScreenshot">
-                                                                  <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(in_Config(&quot;TakeProcessedTransactionsSnapshot&quot;))" />
-                                                                </InArgument>
+                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Prefix">[String.Empty]</InArgument>
+                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Suffix">CSP_UnselectTrns_ToReject</InArgument>
+                                                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_TakeScreenshot">[CBool(in_Config("TakeProcessedTransactionsSnapshot"))]</InArgument>
                                                               </ui:InvokeWorkflowFile.Arguments>
                                                             </ui:InvokeWorkflowFile>
                                                           </Sequence>
@@ -574,19 +559,23 @@
                                                               </sap:WorkflowViewStateService.ViewState>
                                                               <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_18">
                                                                 <TryCatch.Try>
-                                                                  <Sequence sap:VirtualizedContainerService.HintSize="376,266" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                                                                  <Sequence sap:VirtualizedContainerService.HintSize="376,592" sap2010:WorkflowViewState.IdRef="Sequence_38">
                                                                     <sap:WorkflowViewStateService.ViewState>
                                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                       </scg:Dictionary>
                                                                     </sap:WorkflowViewStateService.ViewState>
-                                                                    <e:CSP_ReApplyFilter sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ReApplyFilter_6" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" out_SearchResults="[dtTransactions]">
+                                                                    <ui:OutputDataTable DataTable="[dtTransactions]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[dtOutput]" />
+                                                                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[dtOutput]" />
+                                                                    <e:CSP_ReApplyFilter sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ReApplyFilter_12" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" out_SearchResults="[dtTransactions]">
                                                                       <sap:WorkflowViewStateService.ViewState>
                                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                         </scg:Dictionary>
                                                                       </sap:WorkflowViewStateService.ViewState>
                                                                     </e:CSP_ReApplyFilter>
+                                                                    <ui:OutputDataTable DataTable="[dtTransactions]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[dtOutput]" />
+                                                                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[dtOutput]" />
                                                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                                                                       <ui:InvokeWorkflowFile.Arguments>
                                                                         <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
@@ -689,14 +678,16 @@
                                                       <av:PointCollection x:Key="ConnectorLocation">641,246.5 641,196.5</av:PointCollection>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
-                                                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_19">
+                                                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,819" sap2010:WorkflowViewState.IdRef="TryCatch_19">
                                                     <TryCatch.Try>
-                                                      <Sequence sap:VirtualizedContainerService.HintSize="376,266" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                                      <Sequence sap:VirtualizedContainerService.HintSize="376,592" sap2010:WorkflowViewState.IdRef="Sequence_40">
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
+                                                        <ui:OutputDataTable DataTable="[dtTransactions]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" Text="[dtOutput]" />
+                                                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[dtOutput]" />
                                                         <e:CSP_ReApplyFilter sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ReApplyFilter_7" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" out_SearchResults="[dtTransactions]">
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -704,6 +695,8 @@
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
                                                         </e:CSP_ReApplyFilter>
+                                                        <ui:OutputDataTable DataTable="[dtTransactions]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_4" Text="[dtOutput]" />
+                                                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[dtOutput]" />
                                                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                                                           <ui:InvokeWorkflowFile.Arguments>
                                                             <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
@@ -844,19 +837,11 @@
                                                           <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_4" in_ApprovalType="Authorise" in_DelayAfterApproval="[CInt(in_Config(&quot;DelayAfterApproval&quot;))]" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtTransactions]" />
                                                           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                                                             <ui:InvokeWorkflowFile.Arguments>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
-                                                                <Literal x:TypeArguments="x:String">ProcessedTransactions_Screenshots</Literal>
-                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
                                                               <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath" />
-                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Prefix">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Empty" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Suffix">
-                                                                <Literal x:TypeArguments="x:String">CSP_ApproveTrns_ForAuthorisation</Literal>
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_TakeScreenshot">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(in_Config(&quot;TakeProcessedTransactionsSnapshot&quot;))" />
-                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Prefix">[String.Empty]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Suffix">CSP_ApproveTrns_ForAuthorisation</InArgument>
+                                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_TakeScreenshot">[CBool(in_Config("TakeProcessedTransactionsSnapshot"))]</InArgument>
                                                             </ui:InvokeWorkflowFile.Arguments>
                                                           </ui:InvokeWorkflowFile>
                                                         </Sequence>
@@ -1034,19 +1019,11 @@
                                                                             <e:CSP_SelectTransactionsForProcessing sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_SelectTransactionsForProcessing_6" in_SelectAllTransactions="[dtAuthoriseTransactions.Rows.Count = 0]" in_TransactionStatuses="[dtRejectTransactions]" out_BusinessException="[out_BusinessException]" out_SystemException="[out_SystemException]" />
                                                                             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                                                                               <ui:InvokeWorkflowFile.Arguments>
-                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
-                                                                                  <Literal x:TypeArguments="x:String">ProcessedTransactions_Screenshots</Literal>
-                                                                                </InArgument>
+                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
                                                                                 <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath" />
-                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Prefix">
-                                                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Empty" />
-                                                                                </InArgument>
-                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Suffix">
-                                                                                  <Literal x:TypeArguments="x:String">CSP_SelectTrns_ForRejection</Literal>
-                                                                                </InArgument>
-                                                                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_TakeScreenshot">
-                                                                                  <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(in_Config(&quot;TakeProcessedTransactionsSnapshot&quot;))" />
-                                                                                </InArgument>
+                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Prefix">[String.Empty]</InArgument>
+                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Suffix">CSP_SelectTrns_ForRejection</InArgument>
+                                                                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_TakeScreenshot">[CBool(in_Config("TakeProcessedTransactionsSnapshot"))]</InArgument>
                                                                               </ui:InvokeWorkflowFile.Arguments>
                                                                             </ui:InvokeWorkflowFile>
                                                                           </Sequence>
@@ -1112,19 +1089,11 @@
                                                                                           <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_5" in_ApprovalType="Reject" in_DelayAfterApproval="0" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtTransactions]" />
                                                                                           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                                                                                             <ui:InvokeWorkflowFile.Arguments>
-                                                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
-                                                                                                <Literal x:TypeArguments="x:String">ProcessedTransactions_Screenshots</Literal>
-                                                                                              </InArgument>
+                                                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
                                                                                               <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath" />
-                                                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Prefix">
-                                                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Empty" />
-                                                                                              </InArgument>
-                                                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Suffix">
-                                                                                                <Literal x:TypeArguments="x:String">CSP_ApproveTrns_ForRejection</Literal>
-                                                                                              </InArgument>
-                                                                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_TakeScreenshot">
-                                                                                                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(in_Config(&quot;TakeProcessedTransactionsSnapshot&quot;))" />
-                                                                                              </InArgument>
+                                                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Prefix">[String.Empty]</InArgument>
+                                                                                              <InArgument x:TypeArguments="x:String" x:Key="in_Suffix">CSP_ApproveTrns_ForRejection</InArgument>
+                                                                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_TakeScreenshot">[CBool(in_Config("TakeProcessedTransactionsSnapshot"))]</InArgument>
                                                                                             </ui:InvokeWorkflowFile.Arguments>
                                                                                           </ui:InvokeWorkflowFile>
                                                                                         </Sequence>
@@ -1216,19 +1185,23 @@
                                                                               </sap:WorkflowViewStateService.ViewState>
                                                                               <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_25">
                                                                                 <TryCatch.Try>
-                                                                                  <Sequence sap:VirtualizedContainerService.HintSize="376,266" sap2010:WorkflowViewState.IdRef="Sequence_56">
+                                                                                  <Sequence sap:VirtualizedContainerService.HintSize="376,592" sap2010:WorkflowViewState.IdRef="Sequence_56">
                                                                                     <sap:WorkflowViewStateService.ViewState>
                                                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                       </scg:Dictionary>
                                                                                     </sap:WorkflowViewStateService.ViewState>
-                                                                                    <e:CSP_ReApplyFilter sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ReApplyFilter_11" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" out_SearchResults="[dtTransactions]">
+                                                                                    <ui:OutputDataTable DataTable="[dtTransactions]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_5" Text="[dtOutput]" />
+                                                                                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[dtOutput]" />
+                                                                                    <e:CSP_ReApplyFilter sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ReApplyFilter_13" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" out_SearchResults="[dtTransactions]">
                                                                                       <sap:WorkflowViewStateService.ViewState>
                                                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                         </scg:Dictionary>
                                                                                       </sap:WorkflowViewStateService.ViewState>
                                                                                     </e:CSP_ReApplyFilter>
+                                                                                    <ui:OutputDataTable DataTable="[dtTransactions]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_6" Text="[dtOutput]" />
+                                                                                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[dtOutput]" />
                                                                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                                                                                       <ui:InvokeWorkflowFile.Arguments>
                                                                                         <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
@@ -1450,20 +1423,24 @@
                                               </sap:WorkflowViewStateService.ViewState>
                                               <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_22">
                                                 <TryCatch.Try>
-                                                  <Sequence sap:VirtualizedContainerService.HintSize="376,267" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                                                  <Sequence sap:VirtualizedContainerService.HintSize="376,592" sap2010:WorkflowViewState.IdRef="Sequence_48">
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
-                                                    <e:CSP_ReApplyFilter sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ReApplyFilter_9" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" out_SearchResults="[dtTransactions]">
+                                                    <ui:OutputDataTable DataTable="[dtTransactions]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_7" Text="[dtOutput]" />
+                                                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_7" Text="[dtOutput]" />
+                                                    <e:CSP_ReApplyFilter sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ReApplyFilter_14" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" out_SearchResults="[dtTransactions]">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
                                                     </e:CSP_ReApplyFilter>
-                                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
+                                                    <ui:OutputDataTable DataTable="[dtTransactions]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_8" Text="[dtOutput]" />
+                                                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="[dtOutput]" />
+                                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                                                       <ui:InvokeWorkflowFile.Arguments>
                                                         <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
                                                         <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath" />
@@ -1475,7 +1452,7 @@
                                                   </Sequence>
                                                 </TryCatch.Try>
                                                 <TryCatch.Catches>
-                                                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_23">
+                                                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_23">
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1601,19 +1578,23 @@
                       </sap:WorkflowViewStateService.ViewState>
                       <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_14">
                         <TryCatch.Try>
-                          <Sequence sap:VirtualizedContainerService.HintSize="376,266" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                          <Sequence sap:VirtualizedContainerService.HintSize="376,592" sap2010:WorkflowViewState.IdRef="Sequence_50">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <e:CSP_ReApplyFilter sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ReApplyFilter_5" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" out_SearchResults="[dtTransactions]">
+                            <ui:OutputDataTable DataTable="[dtTransactions]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_9" Text="[dtOutput]" />
+                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_9" Text="[dtOutput]" />
+                            <e:CSP_ReApplyFilter sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="CSP_ReApplyFilter_15" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" out_SearchResults="[dtTransactions]">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </e:CSP_ReApplyFilter>
+                            <ui:OutputDataTable DataTable="[dtTransactions]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_10" Text="[dtOutput]" />
+                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_10" Text="[dtOutput]" />
                             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                               <ui:InvokeWorkflowFile.Arguments>
                                 <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
