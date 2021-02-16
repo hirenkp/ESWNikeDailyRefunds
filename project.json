@@ -3,7 +3,7 @@
   "description": "",
   "main": "Main.xaml",
   "dependencies": {
-    "ESWCustomerServicesPortal": "[1.0.32]",
+    "ESWCustomerServicesPortal": "[1.0.36]",
     "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.Mail.Activities": "[1.9.3]",
     "UiPath.System.Activities": "[20.10.3]",
@@ -13,7 +13,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "20.10.2.0",
-  "projectVersion": "1.0.33",
+  "projectVersion": "1.0.34",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
