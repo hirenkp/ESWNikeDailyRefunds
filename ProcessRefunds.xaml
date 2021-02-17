@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1345,1887</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1345,1747</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessRefunds_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -86,7 +86,6 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Process all refunds" sap:VirtualizedContainerService.HintSize="1355,1682" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -201,12 +200,12 @@
             </TryCatch.Catches>
           </TryCatch>
           <FlowStep.Next>
-            <FlowDecision x:Name="__ReferenceID41" Condition="[out_BusinessException is Nothing And out_SystemException is Nothing]" DisplayName="No exceptions?" sap:VirtualizedContainerService.HintSize="87,87" sap2010:WorkflowViewState.IdRef="FlowDecision_8">
+            <FlowDecision x:Name="__ReferenceID41" Condition="[out_BusinessException is Nothing And out_SystemException is Nothing]" DisplayName="No exceptions?" sap:VirtualizedContainerService.HintSize="86,87" sap2010:WorkflowViewState.IdRef="FlowDecision_8">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <av:Point x:Key="ShapeLocation">730.641666666667,466.5</av:Point>
-                  <av:Size x:Key="ShapeSize">87,87</av:Size>
+                  <av:Size x:Key="ShapeSize">86,87</av:Size>
                   <av:PointCollection x:Key="TrueConnector">730.641666666667,510 640,510 640,686.5</av:PointCollection>
                   <av:PointCollection x:Key="FalseConnector">817.641666666667,510 907.641666666667,510</av:PointCollection>
                 </scg:Dictionary>
@@ -306,7 +305,7 @@
                                       <av:PointCollection x:Key="ConnectorLocation">589,197.5 589,366.5</av:PointCollection>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Flowchart DisplayName="Select trns for Authorisation" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Flowchart_4">
+                                  <Flowchart DisplayName="Select trns for Authorisation" sap:VirtualizedContainerService.HintSize="1142,636" sap2010:WorkflowViewState.IdRef="Flowchart_4">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -327,7 +326,7 @@
                                           <av:PointCollection x:Key="ConnectorLocation">400,178.5 400,228.5</av:PointCollection>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <TryCatch DisplayName="TryCatch Select All Transactions" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_16">
+                                      <TryCatch DisplayName="TryCatch Select All Transactions" sap:VirtualizedContainerService.HintSize="438,550" sap2010:WorkflowViewState.IdRef="TryCatch_16">
                                         <TryCatch.Try>
                                           <Sequence sap:VirtualizedContainerService.HintSize="376,323" sap2010:WorkflowViewState.IdRef="Sequence_32">
                                             <sap:WorkflowViewStateService.ViewState>
@@ -365,7 +364,7 @@
                                               <ActivityAction.Argument>
                                                 <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                               </ActivityAction.Argument>
-                                              <Sequence sap:VirtualizedContainerService.HintSize="304,211" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                              <Sequence sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -386,12 +385,12 @@
                                         </TryCatch.Catches>
                                       </TryCatch>
                                       <FlowStep.Next>
-                                        <FlowDecision x:Name="__ReferenceID8" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="82,87" sap2010:WorkflowViewState.IdRef="FlowDecision_20">
+                                        <FlowDecision x:Name="__ReferenceID8" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="81,87" sap2010:WorkflowViewState.IdRef="FlowDecision_20">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               <av:Point x:Key="ShapeLocation">359,228.5</av:Point>
-                                              <av:Size x:Key="ShapeSize">82,87</av:Size>
+                                              <av:Size x:Key="ShapeSize">81,87</av:Size>
                                               <av:PointCollection x:Key="TrueConnector">359,272 200,272</av:PointCollection>
                                               <av:PointCollection x:Key="FalseConnector">441,272 541,272</av:PointCollection>
                                             </scg:Dictionary>
@@ -511,12 +510,12 @@
                                                     </TryCatch.Catches>
                                                   </TryCatch>
                                                   <FlowStep.Next>
-                                                    <FlowDecision x:Name="__ReferenceID3" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="82,87" sap2010:WorkflowViewState.IdRef="FlowDecision_18">
+                                                    <FlowDecision x:Name="__ReferenceID3" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="81,87" sap2010:WorkflowViewState.IdRef="FlowDecision_18">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                           <av:Point x:Key="ShapeLocation">59,486</av:Point>
-                                                          <av:Size x:Key="ShapeSize">82,87</av:Size>
+                                                          <av:Size x:Key="ShapeSize">81,87</av:Size>
                                                           <av:PointCollection x:Key="TrueConnector">330,282 210,282</av:PointCollection>
                                                           <av:PointCollection x:Key="FalseConnector">141,529.5 241,529.5</av:PointCollection>
                                                         </scg:Dictionary>
@@ -599,12 +598,12 @@
                                                             </TryCatch.Catches>
                                                           </TryCatch>
                                                           <FlowStep.Next>
-                                                            <FlowDecision x:Name="__ReferenceID5" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="82,87" sap2010:WorkflowViewState.IdRef="FlowDecision_17" True="{x:Reference __ReferenceID0}">
+                                                            <FlowDecision x:Name="__ReferenceID5" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="81,87" sap2010:WorkflowViewState.IdRef="FlowDecision_17" True="{x:Reference __ReferenceID0}">
                                                               <sap:WorkflowViewStateService.ViewState>
                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                   <av:Point x:Key="ShapeLocation">300,367</av:Point>
-                                                                  <av:Size x:Key="ShapeSize">82,87</av:Size>
+                                                                  <av:Size x:Key="ShapeSize">81,87</av:Size>
                                                                   <av:PointCollection x:Key="TrueConnector">300,410.5 270,410.5 270,337 1021,337 1021,94 584,94 584,153 500,153</av:PointCollection>
                                                                   <av:PointCollection x:Key="FalseConnector">382,410.5 472,410.5</av:PointCollection>
                                                                 </scg:Dictionary>
@@ -720,12 +719,12 @@
                                                 </TryCatch.Catches>
                                               </TryCatch>
                                               <FlowStep.Next>
-                                                <FlowDecision x:Name="__ReferenceID6" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="82,87" sap2010:WorkflowViewState.IdRef="FlowDecision_19" True="{x:Reference __ReferenceID0}">
+                                                <FlowDecision x:Name="__ReferenceID6" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="81,87" sap2010:WorkflowViewState.IdRef="FlowDecision_19" True="{x:Reference __ReferenceID0}">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                       <av:Point x:Key="ShapeLocation">600,109.5</av:Point>
-                                                      <av:Size x:Key="ShapeSize">82,87</av:Size>
+                                                      <av:Size x:Key="ShapeSize">81,87</av:Size>
                                                       <av:PointCollection x:Key="TrueConnector">600,153 500,153</av:PointCollection>
                                                       <av:PointCollection x:Key="FalseConnector">682,153 732,153</av:PointCollection>
                                                     </scg:Dictionary>
@@ -772,12 +771,12 @@
                                     <x:Reference>__ReferenceID10</x:Reference>
                                   </Flowchart>
                                   <FlowStep.Next>
-                                    <FlowDecision x:Name="__ReferenceID27" Condition="[out_BusinessException Is Nothing and out_SystemException Is Nothing]" DisplayName="No exception" sap:VirtualizedContainerService.HintSize="77,87" sap2010:WorkflowViewState.IdRef="FlowDecision_14">
+                                    <FlowDecision x:Name="__ReferenceID27" Condition="[out_BusinessException Is Nothing and out_SystemException Is Nothing]" DisplayName="No exception" sap:VirtualizedContainerService.HintSize="76,87" sap2010:WorkflowViewState.IdRef="FlowDecision_14">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <av:Point x:Key="ShapeLocation">550.5,366.5</av:Point>
-                                          <av:Size x:Key="ShapeSize">77,87</av:Size>
+                                          <av:Size x:Key="ShapeSize">76,87</av:Size>
                                           <av:PointCollection x:Key="TrueConnector">550.5,410 520.5,410 520.5,410.5 450.5,410.5</av:PointCollection>
                                           <av:PointCollection x:Key="FalseConnector">627.5,410 657.5,410 657.5,410.5 750,410.5</av:PointCollection>
                                         </scg:Dictionary>
@@ -886,18 +885,10 @@
                                                   </sap:WorkflowViewStateService.ViewState>
                                                   <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
                                                     <ui:InvokeWorkflowFile.Arguments>
-                                                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">
-                                                        <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtAuthoriseTransactions" />
-                                                      </InArgument>
-                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">
-                                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TransactionAuditFile&quot;).ToString().Replace(&quot;{year}&quot;, now.Year.ToString).Replace(&quot;{month}&quot;, now.Month.ToString(&quot;00&quot;))" />
-                                                      </InArgument>
-                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionStatus">
-                                                        <Literal x:TypeArguments="x:String">Authorised</Literal>
-                                                      </InArgument>
-                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_GenerateAudit">
-                                                        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(in_Config(&quot;GenerateAuditFile&quot;).ToString)" />
-                                                      </InArgument>
+                                                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">[dtAuthoriseTransactions]</InArgument>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">[in_Config("TransactionAuditFile").ToString().Replace("{year}", now.Year.ToString).Replace("{month}", now.Month.ToString("00"))]</InArgument>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionStatus">Authorised</InArgument>
+                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_GenerateAudit">[CBool(in_Config("GenerateAuditFile").ToString)]</InArgument>
                                                     </ui:InvokeWorkflowFile.Arguments>
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1120,18 +1111,10 @@
                                                                                   </sap:WorkflowViewStateService.ViewState>
                                                                                   <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
                                                                                     <ui:InvokeWorkflowFile.Arguments>
-                                                                                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">
-                                                                                        <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtRejectTransactions" />
-                                                                                      </InArgument>
-                                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">
-                                                                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TransactionAuditFile&quot;).ToString().Replace(&quot;{year}&quot;, now.Year.ToString).Replace(&quot;{month}&quot;, now.Month.ToString(&quot;00&quot;))" />
-                                                                                      </InArgument>
-                                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionStatus">
-                                                                                        <Literal x:TypeArguments="x:String">Rejected</Literal>
-                                                                                      </InArgument>
-                                                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_GenerateAudit">
-                                                                                        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(in_Config(&quot;GenerateAuditFile&quot;).ToString)" />
-                                                                                      </InArgument>
+                                                                                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">[dtRejectTransactions]</InArgument>
+                                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">[in_Config("TransactionAuditFile").ToString().Replace("{year}", now.Year.ToString).Replace("{month}", now.Month.ToString("00"))]</InArgument>
+                                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionStatus">Rejected</InArgument>
+                                                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_GenerateAudit">[CBool(in_Config("GenerateAuditFile").ToString)]</InArgument>
                                                                                     </ui:InvokeWorkflowFile.Arguments>
                                                                                   </ui:InvokeWorkflowFile>
                                                                                 </FlowStep>
@@ -1479,12 +1462,12 @@
                                             </TryCatch.Catches>
                                           </TryCatch>
                                           <FlowStep.Next>
-                                            <FlowDecision x:Name="__ReferenceID29" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="82,87" sap2010:WorkflowViewState.IdRef="FlowDecision_23" True="{x:Reference __ReferenceID23}">
+                                            <FlowDecision x:Name="__ReferenceID29" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="81,87" sap2010:WorkflowViewState.IdRef="FlowDecision_23" True="{x:Reference __ReferenceID23}">
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   <av:Point x:Key="ShapeLocation">809,246.5</av:Point>
-                                                  <av:Size x:Key="ShapeSize">82,87</av:Size>
+                                                  <av:Size x:Key="ShapeSize">81,87</av:Size>
                                                   <av:PointCollection x:Key="TrueConnector">809,290 719,290 719,171.5 689,171.5</av:PointCollection>
                                                   <av:PointCollection x:Key="FalseConnector">891,290 971,290</av:PointCollection>
                                                 </scg:Dictionary>
@@ -1637,12 +1620,12 @@
                     </TryCatch.Catches>
                   </TryCatch>
                   <FlowStep.Next>
-                    <FlowDecision x:Name="__ReferenceID42" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="82,87" sap2010:WorkflowViewState.IdRef="FlowDecision_16" True="{x:Reference __ReferenceID38}">
+                    <FlowDecision x:Name="__ReferenceID42" Condition="[out_BusinessException Is Nothing And out_SystemException Is Nothing]" DisplayName="No exceptions" sap:VirtualizedContainerService.HintSize="81,87" sap2010:WorkflowViewState.IdRef="FlowDecision_16" True="{x:Reference __ReferenceID38}">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <av:Point x:Key="ShapeLocation">966.641666666667,585.5</av:Point>
-                          <av:Size x:Key="ShapeSize">82,87</av:Size>
+                          <av:Size x:Key="ShapeSize">81,87</av:Size>
                           <av:PointCollection x:Key="TrueConnector">966.641666666667,629 680,629 680,686.5</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
