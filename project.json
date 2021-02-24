@@ -13,7 +13,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "20.10.2.0",
-  "projectVersion": "1.0.41",
+  "projectVersion": "1.0.42",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
@@ -52,7 +52,8 @@
         "Data/Input/PaymentTransactionTypes - Refund Fins Only.xlsx",
         "Data/Input/PaymentTransactionTypes - UAT.xlsx",
         "Backups/ProcessRefunds_3.xaml",
-        "Backups/ProcessRefunds_4.xaml"
+        "Backups/ProcessRefunds_4.xaml",
+        "Backups/ProcessRefunds - 22022021.xaml"
       ]
     },
     "fileInfoCollection": [],

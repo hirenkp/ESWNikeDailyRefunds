@@ -1,17 +1,17 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="RMF_AppendRowsToSheetAndApplyFormulas" this:RMF_AppendRowsToSheetAndApplyFormulas.in_MasterFileWorkbook="[Nothing]" this:RMF_AppendRowsToSheetAndApplyFormulas.in_MasterFile="[string.Empty]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property sap2010:Annotation.AnnotationText="A datatable containing, the transactions extracted from the search results in CSP." Name="in_Data" Type="InArgument(sd:DataTable)" />
     <x:Property sap2010:Annotation.AnnotationText="The sheet in which to added the etracted transactions from CSP" Name="in_Sheet" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Template in the format [start column][start row]:[end column][end row] A1:S7. This template is stored in Data\Input\PaymentTransactionsType.xlsx nd represents the range that contains the columns used as fourmulas for the newly added rows" Name="in_FormulaRangeTemplate" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Template in the format [start column][start row]:[end column][end row] A1:S7. This template is stored in Data\Input\PaymentTransactionsType.xlsx and represents the range that contains the Refund Date column  for the newly added rows" Name="in_RefundDateColumnTemplate" Type="InArgument(x:String)" />
-    <x:Property sap2010:Annotation.AnnotationText="This is an array that contains two Long values the first is the start row of the new added transactions and the second is the end row of the newly added transactions." Name="out_NewlyAddedRowsRange" Type="OutArgument(s:Int64[])" />
+    <x:Property sap2010:Annotation.AnnotationText="This is an array that contains two Long values the first is the start row of the new added transactions and the second is the end row of the newly added transactions." Name="out_NewlyAddedRowsRange" Type="OutArgument(s:Int32[])" />
     <x:Property sap2010:Annotation.AnnotationText="Reference to workbook application to the Nike Master Refund file" Name="in_MasterFileWorkbook" Type="InArgument(ui:WorkbookApplication)" />
     <x:Property sap2010:Annotation.AnnotationText="The filename is required for the studioX excel activity" Name="in_MasterFile" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="A datatable containing, the transactions extracted from the search results in CSP." Name="in_CSPData" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1046,5404</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1155,4520</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AppendRowsToSheetInExisitingWorkbook_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -82,7 +82,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="AppendRowsToSheetInExisitingWorkbook" sap:VirtualizedContainerService.HintSize="915,5239" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="AppendRowsToSheetInExisitingWorkbook" sap:VirtualizedContainerService.HintSize="915,4355" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:WorkbookApplication" Name="workbook" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtFormulas" />
@@ -107,7 +107,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ReturnWorkbook workflow" sap:VirtualizedContainerService.HintSize="345,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
+        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Excel_ReturnWorkbook workflow" sap:VirtualizedContainerService.HintSize="348,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ExcelOperations\Excel_ReturnWorkbook.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_File">[in_MasterFile]</InArgument>
             <OutArgument x:TypeArguments="ui:WorkbookApplication" x:Key="out_Workbook">[workbook]</OutArgument>
@@ -127,19 +127,17 @@
         </Assign>
       </If.Else>
     </If>
-    <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope we are using workbook application as reference so need for fill file name property" ExistingWorkbook="[workbook]" sap:VirtualizedContainerService.HintSize="873,4516" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000">
+    <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope we are using workbook application as reference so need for fill file name property" ExistingWorkbook="[workbook]" sap:VirtualizedContainerService.HintSize="873,3632" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="839,4407" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="839,3523" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dtTransactions" />
-              <Variable x:TypeArguments="x:Int64" Name="appendRangeRowStart" />
               <Variable x:TypeArguments="x:String" Name="startRange" />
               <Variable x:TypeArguments="x:String" Name="endRange" />
-              <Variable x:TypeArguments="x:Int64" Name="appendRangeRowEnd" />
               <Variable x:TypeArguments="s:String[]" sap2010:Annotation.AnnotationText="This contains the formula data that is stored in Data\Input\PaymentTransactionTypes.xlsx, in the sheet 'Sheet Formulas', Please note that if any of the formulas used in the refund master are changed then they need to also be updated in the PaymentTransactionTypes.xlsx file." Name="arFormulas" />
               <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="This range consists of the cells that contain the formulas that need to be applied after the newly added rows have been appended " Name="calculationRange" />
             </Sequence.Variables>
@@ -150,82 +148,35 @@
             </sap:WorkflowViewStateService.ViewState>
             <Assign DisplayName="Initialize variable out_NewlyAddedRowsRange" sap:VirtualizedContainerService.HintSize="797,60" sap2010:WorkflowViewState.IdRef="Assign_8">
               <Assign.To>
-                <OutArgument x:TypeArguments="s:Int64[]">[out_NewlyAddedRowsRange]</OutArgument>
+                <OutArgument x:TypeArguments="s:Int32[]">[out_NewlyAddedRowsRange]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="s:Int64[]">[new Int64(2) {}]</InArgument>
+                <InArgument x:TypeArguments="s:Int32[]">[new Int32(2) {}]</InArgument>
               </Assign.Value>
             </Assign>
             <ui:ExcelReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dtTransactions]" DisplayName="Read Range All rows in the sheet indicated in the argument" sap:VirtualizedContainerService.HintSize="797,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[in_Sheet]" />
-            <If Condition="[dtTransactions.Rows.Count &gt; 1]" DisplayName="If there are transaction rows on the sheet" sap:VirtualizedContainerService.HintSize="797,722" sap2010:WorkflowViewState.IdRef="If_2">
-              <If.Then>
-                <Sequence DisplayName="Remove any empty rows from the end in the used range of the incoming sheet" sap:VirtualizedContainerService.HintSize="476,575" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:InterruptibleWhile DisplayName="While the date column (b) is empty remove the row" sap:VirtualizedContainerService.HintSize="434,341" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
-                    <ui:InterruptibleWhile.Body>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="242,176" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:RemoveDataRow Row="{x:Null}" DataTable="[dtTransactions]" DisplayName="Remove Data Row at specified index" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="RemoveDataRow_1" RowIndex="[dtTransactions.Rows.Count - 1]" />
-                        <ui:ExcelInsertDeleteRows DisplayName="Delete Row from the current sheet at specified index" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ExcelInsertDeleteRows_1" Mode="Remove" NoRows="1" Position="[dtTransactions.Rows.Count + 1]" SheetName="[in_Sheet]" />
-                      </Sequence>
-                    </ui:InterruptibleWhile.Body>
-                    <ui:InterruptibleWhile.Condition>
-                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="(Not dtTransactions is Nothing) And (dtTransactions.Rows(dtTransactions.Rows.Count - 1)(&quot;Date&quot;).ToString().Trim() = string.Empty)" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_3" />
-                    </ui:InterruptibleWhile.Condition>
-                  </ui:InterruptibleWhile>
-                  <Assign sap2010:Annotation.AnnotationText="Set the start row to the next empty row after the previous transaction rows" DisplayName="Set appendRangeRowStart to next available row" sap:VirtualizedContainerService.HintSize="434,102" sap2010:WorkflowViewState.IdRef="Assign_2">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int64">[appendRangeRowStart]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int64">[dtTransactions.Rows.Count + 2]</InArgument>
-                    </Assign.Value>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </Assign>
-                </Sequence>
-              </If.Then>
-              <If.Else>
-                <Assign sap2010:Annotation.AnnotationText="The sheet has one row set the start row to 2 (1 is used for the header and 2 is for first transaction row)" DisplayName="Set appendRangeRowStart to third row" sap:VirtualizedContainerService.HintSize="262,117" sap2010:WorkflowViewState.IdRef="Assign_6">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:Int64">[appendRangeRowStart]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:Int64">3</InArgument>
-                  </Assign.Value>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </Assign>
-              </If.Else>
-            </If>
-            <Assign DisplayName="Add start row to first item in array" sap:VirtualizedContainerService.HintSize="797,60" sap2010:WorkflowViewState.IdRef="Assign_9">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Int64">[out_NewlyAddedRowsRange(0)]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Int64">[appendRangeRowStart]</InArgument>
-              </Assign.Value>
-            </Assign>
             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TrimDataTableContent workflow" sap:VirtualizedContainerService.HintSize="797,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="General\TrimDataTableContent.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DataTable">[in_Data]</InOutArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_DataTable">[in_CSPData]</InOutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
-            <ui:ExcelWriteRange AddHeaders="False" sap2010:Annotation.AnnotationText="Write the extracted transactions from the next avilable empty row, starting in column b.&#xA;&#xA;We use WriteRange activity as opposed to AppendRange, because we want to start writing from column B" DataTable="[in_Data]" DisplayName="Write the data in the in_Data to specified sheet" sap:VirtualizedContainerService.HintSize="797,189" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[in_Sheet]" StartingCell="[&quot;B&quot; + appendRangeRowStart.ToString()]">
+            <Assign sap:VirtualizedContainerService.HintSize="797,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[out_NewlyAddedRowsRange(0)]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[dtTransactions.Rows.Count + 2]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign sap:VirtualizedContainerService.HintSize="797,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[out_NewlyAddedRowsRange(1)]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">[out_NewlyAddedRowsRange(0) + in_CSPData.Rows.Count - 1]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ExcelWriteRange AddHeaders="False" sap2010:Annotation.AnnotationText="Write the extracted transactions from the next avilable empty row, starting in column b.&#xA;&#xA;We use WriteRange activity as opposed to AppendRange, because we want to start writing from column B" DataTable="[in_CSPData]" DisplayName="Write the data in the in_Data to specified sheet" sap:VirtualizedContainerService.HintSize="797,189" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[in_Sheet]" StartingCell="[&quot;B&quot; + out_NewlyAddedRowsRange(0).ToString]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -245,14 +196,14 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
-            <ui:ExcelWriteCell Cell="[in_RefundDateColumnTemplate(0) + appendRangeRowStart.ToString()]" DisplayName="Write Cell current date in appropriate column" sap:VirtualizedContainerService.HintSize="797,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[in_Sheet]" Text="[Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
-            <ueab:ExcelApplicationCard Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="797,1304" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" WorkbookPath="[in_MasterFile]">
+            <ui:ExcelWriteCell Cell="[in_RefundDateColumnTemplate(0) + out_NewlyAddedRowsRange(0).ToString]" DisplayName="Write Cell current date in appropriate column" sap:VirtualizedContainerService.HintSize="797,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[in_Sheet]" Text="[Now.ToString(&quot;dd/MM/yyyy&quot;)]" />
+            <ueab:ExcelApplicationCard Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="797,1213" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" WorkbookPath="[in_MasterFile]">
               <ueab:ExcelApplicationCard.Body>
                 <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="554,1050" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="554,959" sap2010:WorkflowViewState.IdRef="Sequence_21">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Int32" Name="index" />
                     </Sequence.Variables>
@@ -261,13 +212,13 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ForEach x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="For each formula in the array the format will be column~formula, this needs to be split and the formula part needs to written to the column" CurrentIndex="[index]" DisplayName="For Each item in the formula array" sap:VirtualizedContainerService.HintSize="512,958" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[arFormulas]">
+                    <ui:ForEach x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="For each formula in the array the format will be column~formula, this needs to be split and the formula part needs to written to the column" CurrentIndex="[index]" DisplayName="For Each item in the formula array" sap:VirtualizedContainerService.HintSize="512,867" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[arFormulas]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="x:String">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="x:String" Name="formula" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,783" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,692" sap2010:WorkflowViewState.IdRef="Sequence_23">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="x:String" Name="column" />
                               <Variable x:TypeArguments="x:String" Name="formulaTemplate" />
@@ -300,7 +251,7 @@
                                 <OutArgument x:TypeArguments="x:String">[formulaToApply]</OutArgument>
                               </Assign.To>
                               <Assign.Value>
-                                <InArgument x:TypeArguments="x:String" xml:space="preserve">[formulaTemplate.Replace("{0}",  appendRangeRowStart.ToString)]</InArgument>
+                                <InArgument x:TypeArguments="x:String" xml:space="preserve">[formulaTemplate.Replace("{0}",  out_NewlyAddedRowsRange(0).ToString)]</InArgument>
                               </Assign.Value>
                             </Assign>
                             <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
@@ -311,31 +262,13 @@
                                       <OutArgument x:TypeArguments="x:String">[writeRange]</OutArgument>
                                     </ui:AssignOperation.To>
                                     <ui:AssignOperation.Value>
-                                      <InArgument x:TypeArguments="x:String">[column + appendRangeRowStart.ToString()]</InArgument>
+                                      <InArgument x:TypeArguments="x:String">[column + out_NewlyAddedRowsRange(0).ToString]</InArgument>
                                     </ui:AssignOperation.Value>
                                   </ui:AssignOperation>
                                 </scg:List>
                               </ui:MultipleAssign.AssignOperations>
                             </ui:MultipleAssign>
                             <ueab:WriteCellX Cell="[Excel.Sheet(in_Sheet).Cell(writeRange)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="434,162" sap2010:WorkflowViewState.IdRef="WriteCellX_3" Value="[formulaToApply]" />
-                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="CommentOut_11">
-                              <ui:CommentOut.Body>
-                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_22">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:InvokeVBA OutputValue="{x:Null}" CodeFilePath="Data\VBA\VBA_ApplyFormula.txt" DisplayName="Invoke VBA" EntryMethodName="ApplyFormula" EntryMethodParameters="[{in_Sheet, writeRange, formulaToApply}]" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeVBA_5" />
-                                </Sequence>
-                              </ui:CommentOut.Body>
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </ui:CommentOut>
                           </Sequence>
                         </ActivityAction>
                       </ui:ForEach.Body>
@@ -349,15 +282,15 @@
                 </ActivityAction>
               </ueab:ExcelApplicationCard.Body>
             </ueab:ExcelApplicationCard>
-            <If Condition="[in_Data.Rows.Count &gt; 1]" DisplayName="If there is more then one row to append" sap:VirtualizedContainerService.HintSize="797,853" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[in_CSPData.Rows.Count &gt; 1]" DisplayName="If there is more then one row to append" sap:VirtualizedContainerService.HintSize="797,822" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,706" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence sap:VirtualizedContainerService.HintSize="376,675" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MultipleAssign DisplayName="Multiple Assign set the starting and end range for the extracted data and formulas" sap:VirtualizedContainerService.HintSize="334,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                  <ui:MultipleAssign DisplayName="Multiple Assign set the starting and end range for the extracted data and formulas" sap:VirtualizedContainerService.HintSize="334,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -365,15 +298,7 @@
                             <OutArgument x:TypeArguments="x:String">[startRange]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[string.Format(in_FormulaRangeTemplate, appendRangeRowStart, appendRangeRowStart)]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int64">[appendRangeRowEnd]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int64">[appendRangeRowStart + (in_data.Rows.Count-1)]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[string.Format(in_FormulaRangeTemplate, out_NewlyAddedRowsRange(0), out_NewlyAddedRowsRange(0))]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -381,7 +306,7 @@
                             <OutArgument x:TypeArguments="x:String">[endRange]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[string.Format(in_FormulaRangeTemplate, appendRangeRowStart, appendRangeRowEnd)]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[string.Format(in_FormulaRangeTemplate, out_NewlyAddedRowsRange(0), out_NewlyAddedRowsRange(1))]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
@@ -404,7 +329,7 @@
                             <OutArgument x:TypeArguments="x:String">[startRange]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[string.Format(in_RefundDateColumnTemplate, appendRangeRowStart, appendRangeRowStart)]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[string.Format(in_RefundDateColumnTemplate, out_NewlyAddedRowsRange(0), out_NewlyAddedRowsRange(0))]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -412,7 +337,7 @@
                             <OutArgument x:TypeArguments="x:String">[endRange]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[string.Format(in_RefundDateColumnTemplate, appendRangeRowStart, appendRangeRowEnd)]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[string.Format(in_RefundDateColumnTemplate, out_NewlyAddedRowsRange(0), out_NewlyAddedRowsRange(1))]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                       </scg:List>
@@ -422,29 +347,21 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,252" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence sap:VirtualizedContainerService.HintSize="376,221" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Int64">[appendRangeRowEnd]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Int64">[appendRangeRowStart]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
                           <ui:AssignOperation.To>
                             <OutArgument x:TypeArguments="x:String">[endRange]</OutArgument>
                           </ui:AssignOperation.To>
                           <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[string.Format(in_FormulaRangeTemplate, appendRangeRowStart, appendRangeRowEnd)]</InArgument>
+                            <InArgument x:TypeArguments="x:String">[string.Format(in_FormulaRangeTemplate, out_NewlyAddedRowsRange(0), out_NewlyAddedRowsRange(0))]</InArgument>
                           </ui:AssignOperation.Value>
                         </ui:AssignOperation>
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
@@ -475,14 +392,6 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ExcelSaveWorkbook>
-            <Assign sap:VirtualizedContainerService.HintSize="797,60" sap2010:WorkflowViewState.IdRef="Assign_11">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:Int64">[out_NewlyAddedRowsRange(1)]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:Int64">[appendRangeRowEnd]</InArgument>
-              </Assign.Value>
-            </Assign>
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>

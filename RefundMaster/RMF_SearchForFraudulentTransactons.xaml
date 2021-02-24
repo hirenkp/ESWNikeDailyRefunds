@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
     <x:Property Name="in_WorkbookApplication" Type="InArgument(ui:WorkbookApplication)" />
-    <x:Property sap2010:Annotation.AnnotationText="Array of Int64 containing two elements the first for the start row to search and the second the end row to search" Name="in_SearchRowRange" Type="InArgument(s:Int64[])" />
+    <x:Property sap2010:Annotation.AnnotationText="Array of Int64 containing two elements the first for the start row to search and the second the end row to search" Name="in_SearchRowRange" Type="InArgument(s:Int32[])" />
     <x:Property Name="out_TransactionsToAuthorise" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="out_TransactionsToReject" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="in_FraudPhrase" Type="InArgument(x:String)" />
@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1100,2691</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1155,2691</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>RMF_SearchForFraudulentTransactons_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -77,6 +77,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Search each newly added row from CSP into the master file and check for fraudulent transactions. If the row is deemed to be fradulent, then add the row to the reject table otherwise add it to the authroise table" DisplayName="RMF_SearchForFraudulentTransactons" sap:VirtualizedContainerService.HintSize="725,2526" sap2010:WorkflowViewState.IdRef="Sequence_1">
