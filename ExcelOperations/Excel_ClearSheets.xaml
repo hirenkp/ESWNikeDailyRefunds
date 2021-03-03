@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1046,1389</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1043,1349</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Excel_ClearSheet_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -76,7 +76,6 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Excel_ClearSheet" sap:VirtualizedContainerService.HintSize="575,1184" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -140,7 +139,7 @@
                         <InArgument x:TypeArguments="x:String" xml:space="preserve">[sheetData(2)  + ":" + endColumn + (dtDeleteRows.Rows.Count + 2).ToString()]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:ExcelDeleteRange DisplayName="Delete Range all rows except header" sap:VirtualizedContainerService.HintSize="379,22" sap2010:WorkflowViewState.IdRef="ExcelDeleteRange_2" Range="[range]" SheetName="[sheetData(0)]" ShiftCells="True" ShiftOption="EntireRow" />
+                    <ui:ExcelDeleteRange DisplayName="Delete Range all rows except header" sap:VirtualizedContainerService.HintSize="379,22" sap2010:WorkflowViewState.IdRef="ExcelDeleteRange_2" Range="[range]" SheetName="[sheetData(0)]" ShiftCells="False" ShiftOption="EntireRow" />
                   </Sequence>
                 </ActivityAction>
               </ui:ForEach.Body>

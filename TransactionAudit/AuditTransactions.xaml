@@ -2,13 +2,12 @@
   <x:Members>
     <x:Property Name="in_ProcessedTransactions" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_TransactionAuditFile" Type="InArgument(x:String)" />
-    <x:Property Name="in_TransactionStatus" Type="InArgument(x:String)" />
     <x:Property Name="in_GenerateAudit" Type="InArgument(x:Boolean)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1046,1154</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1043,1114</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AuditTransactions_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
