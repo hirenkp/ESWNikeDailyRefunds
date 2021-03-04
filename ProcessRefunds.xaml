@@ -85,7 +85,6 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Process all refunds" sap:VirtualizedContainerService.HintSize="1355,1682" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -280,52 +279,24 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_AppendRowsToSheet workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="RefundMaster\RMF_AppendRowsToSheetAndApplyFormulas.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Sheet&quot;).ToString" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_FormulaRangeTemplate">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Formula Range Template&quot;).ToString()" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_RefundDateColumnTemplate">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Refund Date Column Template&quot;).ToString()" />
-                            </InArgument>
-                            <OutArgument x:TypeArguments="s:Int32[]" x:Key="out_NewlyAddedRowsRange">
-                              <mva:VisualBasicReference x:TypeArguments="s:Int32[]" ExpressionText="newlyAddedRowsRange" />
-                            </OutArgument>
-                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">
-                              <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="in_MasterFileWorkbook" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_MasterFile">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_MasterFile" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_CSPData">
-                              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtCSPTransactions" />
-                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">[in_TransactionItem("Sheet").ToString]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FormulaRangeTemplate">[in_TransactionItem("Formula Range Template").ToString()]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RefundDateColumnTemplate">[in_TransactionItem("Refund Date Column Template").ToString()]</InArgument>
+                            <OutArgument x:TypeArguments="s:Int32[]" x:Key="out_NewlyAddedRowsRange">[newlyAddedRowsRange]</OutArgument>
+                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">[in_MasterFileWorkbook]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_MasterFile">[in_MasterFile]</InArgument>
+                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_CSPData">[dtCSPTransactions]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_SearchForFraudulentTransactons workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="RefundMaster\RMF_SearchForFraudulentTransactons.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
-                              <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="in_TransactionItem" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_WorkbookApplication">
-                              <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="in_MasterFileWorkbook" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="s:Int32[]" x:Key="in_SearchRowRange">
-                              <mva:VisualBasicValue x:TypeArguments="s:Int32[]" ExpressionText="newlyAddedRowsRange" />
-                            </InArgument>
-                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToAuthorise">
-                              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtAuthoriseTransactions" />
-                            </OutArgument>
-                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToReject">
-                              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtRejectTransactions" />
-                            </OutArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_FraudPhrase">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;FraudPhrase&quot;).ToString()" />
-                            </InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_BankDetailsChangedPhrase">
-                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;BankDetailsChangedPhrase&quot;).ToString()" />
-                            </InArgument>
+                            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_WorkbookApplication">[in_MasterFileWorkbook]</InArgument>
+                            <InArgument x:TypeArguments="s:Int32[]" x:Key="in_SearchRowRange">[newlyAddedRowsRange]</InArgument>
+                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToAuthorise">[dtAuthoriseTransactions]</OutArgument>
+                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToReject">[dtRejectTransactions]</OutArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FraudPhrase">[in_Config("FraudPhrase").ToString()]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_BankDetailsChangedPhrase">[in_Config("BankDetailsChangedPhrase").ToString()]</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </Sequence>
@@ -804,15 +775,9 @@
                                                   </sap:WorkflowViewStateService.ViewState>
                                                   <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
                                                     <ui:InvokeWorkflowFile.Arguments>
-                                                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">
-                                                        <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtAuthoriseTransactions" />
-                                                      </InArgument>
-                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">
-                                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TransactionAuditFile&quot;).ToString().Replace(&quot;{year}&quot;, now.Year.ToString).Replace(&quot;{month}&quot;, now.Month.ToString(&quot;00&quot;))" />
-                                                      </InArgument>
-                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_GenerateAudit">
-                                                        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(in_Config(&quot;GenerateAuditFile&quot;).ToString)" />
-                                                      </InArgument>
+                                                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">[dtAuthoriseTransactions]</InArgument>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">[in_Config("TransactionAuditFile").ToString().Replace("{year}", now.Year.ToString).Replace("{month}", now.Month.ToString("00"))]</InArgument>
+                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_GenerateAudit">[CBool(in_Config("GenerateAuditFile").ToString)]</InArgument>
                                                     </ui:InvokeWorkflowFile.Arguments>
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -842,7 +807,7 @@
                                                               <av:PointCollection x:Key="ConnectorLocation">130,651 130,691</av:PointCollection>
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
-                                                          <Flowchart DisplayName="Reject Transactions" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+                                                          <Flowchart DisplayName="Reject Transactions" sap:VirtualizedContainerService.HintSize="1293,1653" sap2010:WorkflowViewState.IdRef="Flowchart_3">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -969,101 +934,80 @@
                                                                               <av:PointCollection x:Key="ConnectorLocation">411.5,574.5 411.5,635.5</av:PointCollection>
                                                                             </scg:Dictionary>
                                                                           </sap:WorkflowViewStateService.ViewState>
-                                                                          <TryCatch DisplayName="Try Catch Approve Rejections" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_23">
+                                                                          <TryCatch DisplayName="Try Catch Approve Rejections" sap:VirtualizedContainerService.HintSize="808,1711" sap2010:WorkflowViewState.IdRef="TryCatch_23">
                                                                             <sap:WorkflowViewStateService.ViewState>
                                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                               </scg:Dictionary>
                                                                             </sap:WorkflowViewStateService.ViewState>
                                                                             <TryCatch.Try>
-                                                                              <Sequence sap:VirtualizedContainerService.HintSize="957,1938" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                                                                              <Sequence sap:VirtualizedContainerService.HintSize="770,1484" sap2010:WorkflowViewState.IdRef="Sequence_53">
                                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                   </scg:Dictionary>
                                                                                 </sap:WorkflowViewStateService.ViewState>
-                                                                                <If Condition="[CBool(in_Config(&quot;EnableTransactionApproval&quot;))]" sap:VirtualizedContainerService.HintSize="915,1846" sap2010:WorkflowViewState.IdRef="If_10">
+                                                                                <If Condition="[CBool(in_Config(&quot;EnableTransactionApproval&quot;))]" sap:VirtualizedContainerService.HintSize="728,1392" sap2010:WorkflowViewState.IdRef="If_10">
                                                                                   <If.Then>
-                                                                                    <Sequence sap:VirtualizedContainerService.HintSize="770,1698" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                                                                                    <Sequence sap:VirtualizedContainerService.HintSize="583,1244" sap2010:WorkflowViewState.IdRef="Sequence_52">
                                                                                       <sap:WorkflowViewStateService.ViewState>
                                                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                         </scg:Dictionary>
                                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                                      <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="728,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_5" in_ApprovalType="Reject" in_DelayAfterApproval="0" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtCSPTransactions]" />
-                                                                                      <If Condition="[CBool(in_Config(&quot;EnableTransactionApproval&quot;))]" sap:VirtualizedContainerService.HintSize="728,1392" sap2010:WorkflowViewState.IdRef="If_13">
+                                                                                      <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="541,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_5" in_ApprovalType="Reject" in_DelayAfterApproval="0" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtCSPTransactions]" />
+                                                                                      <If Condition="[moreTransactionsToApprove]" sap:VirtualizedContainerService.HintSize="541,938" sap2010:WorkflowViewState.IdRef="If_14">
                                                                                         <If.Then>
-                                                                                          <Sequence sap:VirtualizedContainerService.HintSize="583,1244" sap2010:WorkflowViewState.IdRef="Sequence_59">
+                                                                                          <Sequence sap:VirtualizedContainerService.HintSize="396,790" sap2010:WorkflowViewState.IdRef="Sequence_61">
                                                                                             <sap:WorkflowViewStateService.ViewState>
                                                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                               </scg:Dictionary>
                                                                                             </sap:WorkflowViewStateService.ViewState>
-                                                                                            <e:CSP_ApproveTransactions sap:VirtualizedContainerService.HintSize="541,22" sap2010:WorkflowViewState.IdRef="CSP_ApproveTransactions_6" in_ApprovalType="Authorise" in_DelayAfterApproval="[CInt(in_Config(&quot;DelayAfterApproval&quot;))]" in_ExtractTableMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" out_BusinessException="[out_BusinessException]" out_MoreTransactionsToProcess="[moreTransactionsToApprove]" out_SystemException="[out_SystemException]" out_TransactionResults="[dtCSPTransactions]" />
-                                                                                            <If Condition="[moreTransactionsToApprove]" sap:VirtualizedContainerService.HintSize="541,938" sap2010:WorkflowViewState.IdRef="If_12">
-                                                                                              <If.Then>
-                                                                                                <Sequence sap:VirtualizedContainerService.HintSize="396,790" sap2010:WorkflowViewState.IdRef="Sequence_58">
-                                                                                                  <sap:WorkflowViewStateService.ViewState>
-                                                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                                    </scg:Dictionary>
-                                                                                                  </sap:WorkflowViewStateService.ViewState>
-                                                                                                  <ui:AddDataColumn x:TypeArguments="s:DateTime" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date1" DataTable="[dtCSPTransactions]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="354,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" />
-                                                                                                  <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtCSPTransactions]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="354,300" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
-                                                                                                    <ui:ForEachRow.Body>
-                                                                                                      <ActivityAction x:TypeArguments="sd:DataRow">
-                                                                                                        <ActivityAction.Argument>
-                                                                                                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-                                                                                                        </ActivityAction.Argument>
-                                                                                                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_57">
-                                                                                                          <sap:WorkflowViewStateService.ViewState>
-                                                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                                            </scg:Dictionary>
-                                                                                                          </sap:WorkflowViewStateService.ViewState>
-                                                                                                          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_30">
-                                                                                                            <Assign.To>
-                                                                                                              <OutArgument x:TypeArguments="x:Object">[row("Date1")]</OutArgument>
-                                                                                                            </Assign.To>
-                                                                                                            <Assign.Value>
-                                                                                                              <InArgument x:TypeArguments="x:Object">[DateTime.Parse(row("Date").ToString).ToString("dd/MM/yyyy", New System.Globalization.CultureInfo("en-IE"))]</InArgument>
-                                                                                                            </Assign.Value>
-                                                                                                          </Assign>
-                                                                                                        </Sequence>
-                                                                                                      </ActivityAction>
-                                                                                                    </ui:ForEachRow.Body>
-                                                                                                  </ui:ForEachRow>
-                                                                                                  <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Date" DataTable="[dtCSPTransactions]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="354,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_3" />
-                                                                                                  <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="354,134" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="SetOrdinal">
-                                                                                                    <InvokeMethod.TargetObject>
-                                                                                                      <InArgument x:TypeArguments="sd:DataColumn">[dtCSPTransactions.Columns("Date1")]</InArgument>
-                                                                                                    </InvokeMethod.TargetObject>
-                                                                                                    <InArgument x:TypeArguments="x:Int32">0</InArgument>
-                                                                                                  </InvokeMethod>
-                                                                                                  <Assign sap:VirtualizedContainerService.HintSize="354,60" sap2010:WorkflowViewState.IdRef="Assign_31">
-                                                                                                    <Assign.To>
-                                                                                                      <OutArgument x:TypeArguments="x:String">[dtCSPTransactions.Columns("Date1").ColumnName]</OutArgument>
-                                                                                                    </Assign.To>
-                                                                                                    <Assign.Value>
-                                                                                                      <InArgument x:TypeArguments="x:String">Date</InArgument>
-                                                                                                    </Assign.Value>
-                                                                                                  </Assign>
-                                                                                                </Sequence>
-                                                                                              </If.Then>
-                                                                                            </If>
-                                                                                            <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="541,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
-                                                                                              <ui:InvokeWorkflowFile.Arguments>
-                                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
-                                                                                                <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath" />
-                                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Prefix">[String.Empty]</InArgument>
-                                                                                                <InArgument x:TypeArguments="x:String" x:Key="in_Suffix">CSP_ApproveTrns_ForAuthorisation</InArgument>
-                                                                                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_TakeScreenshot">[CBool(in_Config("TakeProcessedTransactionsSnapshot"))]</InArgument>
-                                                                                              </ui:InvokeWorkflowFile.Arguments>
-                                                                                            </ui:InvokeWorkflowFile>
+                                                                                            <ui:AddDataColumn x:TypeArguments="s:DateTime" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date1" DataTable="[dtCSPTransactions]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="354,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" />
+                                                                                            <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtCSPTransactions]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="354,300" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
+                                                                                              <ui:ForEachRow.Body>
+                                                                                                <ActivityAction x:TypeArguments="sd:DataRow">
+                                                                                                  <ActivityAction.Argument>
+                                                                                                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                                                                                                  </ActivityAction.Argument>
+                                                                                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                                                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                      </scg:Dictionary>
+                                                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_32">
+                                                                                                      <Assign.To>
+                                                                                                        <OutArgument x:TypeArguments="x:Object">[row("Date1")]</OutArgument>
+                                                                                                      </Assign.To>
+                                                                                                      <Assign.Value>
+                                                                                                        <InArgument x:TypeArguments="x:Object">[DateTime.Parse(row("Date").ToString).ToString("dd/MM/yyyy", New System.Globalization.CultureInfo("en-IE"))]</InArgument>
+                                                                                                      </Assign.Value>
+                                                                                                    </Assign>
+                                                                                                  </Sequence>
+                                                                                                </ActivityAction>
+                                                                                              </ui:ForEachRow.Body>
+                                                                                            </ui:ForEachRow>
+                                                                                            <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Date" DataTable="[dtCSPTransactions]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="354,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_4" />
+                                                                                            <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="354,134" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="SetOrdinal">
+                                                                                              <InvokeMethod.TargetObject>
+                                                                                                <InArgument x:TypeArguments="sd:DataColumn">[dtCSPTransactions.Columns("Date1")]</InArgument>
+                                                                                              </InvokeMethod.TargetObject>
+                                                                                              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                                                                                            </InvokeMethod>
+                                                                                            <Assign sap:VirtualizedContainerService.HintSize="354,60" sap2010:WorkflowViewState.IdRef="Assign_33">
+                                                                                              <Assign.To>
+                                                                                                <OutArgument x:TypeArguments="x:String">[dtCSPTransactions.Columns("Date1").ColumnName]</OutArgument>
+                                                                                              </Assign.To>
+                                                                                              <Assign.Value>
+                                                                                                <InArgument x:TypeArguments="x:String">Date</InArgument>
+                                                                                              </Assign.Value>
+                                                                                            </Assign>
                                                                                           </Sequence>
                                                                                         </If.Then>
                                                                                       </If>
-                                                                                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="728,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
+                                                                                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="541,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                                                                                         <ui:InvokeWorkflowFile.Arguments>
                                                                                           <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
                                                                                           <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath" />
@@ -1078,7 +1022,7 @@
                                                                               </Sequence>
                                                                             </TryCatch.Try>
                                                                             <TryCatch.Catches>
-                                                                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="961,21" sap2010:WorkflowViewState.IdRef="Catch`1_24">
+                                                                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="774,21" sap2010:WorkflowViewState.IdRef="Catch`1_24">
                                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1120,17 +1064,11 @@
                                                                                       <av:Size x:Key="ShapeSize">200,51</av:Size>
                                                                                     </scg:Dictionary>
                                                                                   </sap:WorkflowViewStateService.ViewState>
-                                                                                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
+                                                                                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
                                                                                     <ui:InvokeWorkflowFile.Arguments>
-                                                                                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">
-                                                                                        <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtRejectTransactions" />
-                                                                                      </InArgument>
-                                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">
-                                                                                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TransactionAuditFile&quot;).ToString().Replace(&quot;{year}&quot;, now.Year.ToString).Replace(&quot;{month}&quot;, now.Month.ToString(&quot;00&quot;))" />
-                                                                                      </InArgument>
-                                                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_GenerateAudit">
-                                                                                        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CBool(in_Config(&quot;GenerateAuditFile&quot;).ToString)" />
-                                                                                      </InArgument>
+                                                                                      <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">[dtRejectTransactions]</InArgument>
+                                                                                      <InArgument x:TypeArguments="x:String" x:Key="in_TransactionAuditFile">[in_Config("TransactionAuditFile").ToString().Replace("{year}", now.Year.ToString).Replace("{month}", now.Month.ToString("00"))]</InArgument>
+                                                                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_GenerateAudit">[CBool(in_Config("GenerateAuditFile").ToString)]</InArgument>
                                                                                     </ui:InvokeWorkflowFile.Arguments>
                                                                                   </ui:InvokeWorkflowFile>
                                                                                 </FlowStep>
