@@ -11,10 +11,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1043,5331</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1027,5331</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AppendRowsToSheetInExisitingWorkbook_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="32">
+    <scg:List x:TypeArguments="x:String" Capacity="64">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -47,10 +47,11 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>System.Globalization</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -79,6 +80,7 @@
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Appends the rows extracted from CSP to the current sheet in the Nike master file" DisplayName="AppendRowsToSheetInExisitingWorkbook" sap:VirtualizedContainerService.HintSize="921,5166" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -185,7 +187,7 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:ExcelWriteRange>
             <ui:BuildDataTable DataTable="[dtRefundDate]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="803,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Date&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{DateTime.Parse(Now.ToString).ToString(&quot;MM/dd/yyyy&quot;, New System.Globalization.CultureInfo(&quot;en-IE&quot;))}]" DataTable="[dtRefundDate]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="803,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{DateTime.Parse(Now.ToString).ToString(&quot;dd/MM/yyyy&quot;, New System.Globalization.CultureInfo(&quot;en-IE&quot;))}]" DataTable="[dtRefundDate]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="803,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
             <ui:ExcelWriteRange AddHeaders="False" DataTable="[dtRefundDate]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="803,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="[in_Sheet]" StartingCell="[in_RefundDateColumnTemplate(0) + out_NewlyAddedRowsRange(0).ToString]" />
             <Assign sap2010:Annotation.AnnotationText="Take formula array as strings stored in Data\Input\PaymentTransactionTypes.xlsx and convert them to a string array" sap:VirtualizedContainerService.HintSize="803,132" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
