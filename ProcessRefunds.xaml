@@ -215,7 +215,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Sequence sap:VirtualizedContainerService.HintSize="304,246" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                  <Sequence sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_31">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -280,24 +280,52 @@
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_AppendRowsToSheet workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="RefundMaster\RMF_AppendRowsToSheetAndApplyFormulas.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">[in_TransactionItem("Sheet").ToString]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_FormulaRangeTemplate">[in_TransactionItem("Formula Range Template").ToString()]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_RefundDateColumnTemplate">[in_TransactionItem("Refund Date Column Template").ToString()]</InArgument>
-                            <OutArgument x:TypeArguments="s:Int32[]" x:Key="out_NewlyAddedRowsRange">[newlyAddedRowsRange]</OutArgument>
-                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">[in_MasterFileWorkbook]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_MasterFile">[in_MasterFile]</InArgument>
-                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_CSPData">[dtCSPTransactions]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_Sheet">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Sheet&quot;).ToString" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FormulaRangeTemplate">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Formula Range Template&quot;).ToString()" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_RefundDateColumnTemplate">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Refund Date Column Template&quot;).ToString()" />
+                            </InArgument>
+                            <OutArgument x:TypeArguments="s:Int32[]" x:Key="out_NewlyAddedRowsRange">
+                              <mva:VisualBasicReference x:TypeArguments="s:Int32[]" ExpressionText="newlyAddedRowsRange" />
+                            </OutArgument>
+                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_MasterFileWorkbook">
+                              <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="in_MasterFileWorkbook" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_MasterFile">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_MasterFile" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_CSPData">
+                              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtCSPTransactions" />
+                            </InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke RMF_SearchForFraudulentTransactons workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="RefundMaster\RMF_SearchForFraudulentTransactons.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_WorkbookApplication">[in_MasterFileWorkbook]</InArgument>
-                            <InArgument x:TypeArguments="s:Int32[]" x:Key="in_SearchRowRange">[newlyAddedRowsRange]</InArgument>
-                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToAuthorise">[dtAuthoriseTransactions]</OutArgument>
-                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToReject">[dtRejectTransactions]</OutArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_FraudPhrase">[in_Config("FraudPhrase").ToString()]</InArgument>
-                            <InArgument x:TypeArguments="x:String" x:Key="in_BankDetailsChangedPhrase">[in_Config("BankDetailsChangedPhrase").ToString()]</InArgument>
+                            <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
+                              <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="in_TransactionItem" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="ui:WorkbookApplication" x:Key="in_WorkbookApplication">
+                              <mva:VisualBasicValue x:TypeArguments="ui:WorkbookApplication" ExpressionText="in_MasterFileWorkbook" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="s:Int32[]" x:Key="in_SearchRowRange">
+                              <mva:VisualBasicValue x:TypeArguments="s:Int32[]" ExpressionText="newlyAddedRowsRange" />
+                            </InArgument>
+                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToAuthorise">
+                              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtAuthoriseTransactions" />
+                            </OutArgument>
+                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_TransactionsToReject">
+                              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtRejectTransactions" />
+                            </OutArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_FraudPhrase">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;FraudPhrase&quot;).ToString()" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_BankDetailsChangedPhrase">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;BankDetailsChangedPhrase&quot;).ToString()" />
+                            </InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </Sequence>
@@ -814,7 +842,7 @@
                                                               <av:PointCollection x:Key="ConnectorLocation">130,651 130,691</av:PointCollection>
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
-                                                          <Flowchart DisplayName="Reject Transactions" sap:VirtualizedContainerService.HintSize="1293,1653" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+                                                          <Flowchart DisplayName="Reject Transactions" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Flowchart_3">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -941,7 +969,7 @@
                                                                               <av:PointCollection x:Key="ConnectorLocation">411.5,574.5 411.5,635.5</av:PointCollection>
                                                                             </scg:Dictionary>
                                                                           </sap:WorkflowViewStateService.ViewState>
-                                                                          <TryCatch DisplayName="Try Catch Approve Rejections" sap:VirtualizedContainerService.HintSize="995,2165" sap2010:WorkflowViewState.IdRef="TryCatch_23">
+                                                                          <TryCatch DisplayName="Try Catch Approve Rejections" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_23">
                                                                             <sap:WorkflowViewStateService.ViewState>
                                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1092,7 +1120,7 @@
                                                                                       <av:Size x:Key="ShapeSize">200,51</av:Size>
                                                                                     </scg:Dictionary>
                                                                                   </sap:WorkflowViewStateService.ViewState>
-                                                                                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
+                                                                                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke AuditTransactions workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="TransactionAudit\AuditTransactions.xaml">
                                                                                     <ui:InvokeWorkflowFile.Arguments>
                                                                                       <InArgument x:TypeArguments="sd:DataTable" x:Key="in_ProcessedTransactions">
                                                                                         <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dtRejectTransactions" />
