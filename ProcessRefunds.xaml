@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1345,1847</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1345,1787</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessRefunds_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -131,67 +131,78 @@
               <av:PointCollection x:Key="ConnectorLocation">770,249.04 770,279.04 774.141666666667,279.04 774.141666666667,296.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TryCatch DisplayName="Try Catch Search CSP" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="TryCatch_15">
+          <TryCatch DisplayName="Try Catch Search CSP" sap:VirtualizedContainerService.HintSize="751,1528" sap2010:WorkflowViewState.IdRef="TryCatch_15">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence sap:VirtualizedContainerService.HintSize="396,1061" sap2010:WorkflowViewState.IdRef="Sequence_30">
+              <Sequence sap:VirtualizedContainerService.HintSize="713,1301" sap2010:WorkflowViewState.IdRef="Sequence_30">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <e:CSP_SearchFinancialTransactions in_ProcessingStatus="{x:Null}" sap2010:Annotation.AnnotationText="Search transactions based on incoming Payment Type in the transaction item" sap:VirtualizedContainerService.HintSize="354,79" sap2010:WorkflowViewState.IdRef="CSP_SearchFinancialTransactions_2" in_AuthorisationSatuses="[CInt(in_Config(&quot;AuthorisationStatuses&quot;))]" in_Brand="[in_Config(&quot;Brand&quot;).ToString()]" in_DelayAfterFilter="[CInt(in_Config(&quot;DelayAfterApproval&quot;))]" in_DelayBetweenOpeningConsoleAndSettingDate="[CInt(in_Config(&quot;ConsoleToDateDelay&quot;))]" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_FromDate="[in_Config(&quot;FromDate&quot;).ToString()]" in_PaymentType="[in_TransactionItem(&quot;Type&quot;).ToString()]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" in_ToDate="[in_Config(&quot;ToDate&quot;).ToString()]" in_TransactionType="[in_Config(&quot;TransactionType&quot;).ToString()]" out_BusinessException="[out_BusinessException]" out_SearchResults="[dtCSPTransactions]" out_SystemException="[out_SystemException]">
+                <e:CSP_SearchFinancialTransactions in_ProcessingStatus="{x:Null}" sap2010:Annotation.AnnotationText="Search transactions based on incoming Payment Type in the transaction item" sap:VirtualizedContainerService.HintSize="671,79" sap2010:WorkflowViewState.IdRef="CSP_SearchFinancialTransactions_2" in_AuthorisationSatuses="[CInt(in_Config(&quot;AuthorisationStatuses&quot;))]" in_Brand="[in_Config(&quot;Brand&quot;).ToString()]" in_DelayAfterFilter="[CInt(in_Config(&quot;DelayAfterApproval&quot;))]" in_DelayBetweenOpeningConsoleAndSettingDate="[CInt(in_Config(&quot;ConsoleToDateDelay&quot;))]" in_ExtractDataMetaData="&lt;extract-table get_columns_name='1' get_empty_columns='0' columns_name_source='Longest' /&gt;" in_ForcePageSize="[If(CInt(in_Config(&quot;ForcePageSize&quot;)) = 1, True, False)]" in_FromDate="[in_Config(&quot;FromDate&quot;).ToString()]" in_PaymentType="[in_TransactionItem(&quot;Type&quot;).ToString()]" in_SearchResultPageSize="[CInt(in_Config(&quot;MaxPageSize&quot;).ToString())]" in_ToDate="[in_Config(&quot;ToDate&quot;).ToString()]" in_TransactionType="[in_Config(&quot;TransactionType&quot;).ToString()]" out_BusinessException="[out_BusinessException]" out_SearchResults="[dtCSPTransactions]" out_SystemException="[out_SystemException]">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </e:CSP_SearchFinancialTransactions>
-                <ui:AddDataColumn x:TypeArguments="s:DateTime" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date1" DataTable="[dtCSPTransactions]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="354,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
-                <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtCSPTransactions]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="354,300" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
-                  <ui:ForEachRow.Body>
-                    <ActivityAction x:TypeArguments="sd:DataRow">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_54">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_26">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:Object">[row("Date1")]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:Object">[DateTime.Parse(row("Date").ToString).ToString("dd/MM/yyyy", New System.Globalization.CultureInfo("en-IE"))]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                      </Sequence>
-                    </ActivityAction>
-                  </ui:ForEachRow.Body>
-                </ui:ForEachRow>
-                <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Date" DataTable="[dtCSPTransactions]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="354,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_1" />
-                <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="354,134" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="SetOrdinal">
-                  <InvokeMethod.TargetObject>
-                    <InArgument x:TypeArguments="sd:DataColumn">[dtCSPTransactions.Columns("Date1")]</InArgument>
-                  </InvokeMethod.TargetObject>
-                  <InArgument x:TypeArguments="x:Int32">0</InArgument>
-                </InvokeMethod>
-                <Assign sap:VirtualizedContainerService.HintSize="354,60" sap2010:WorkflowViewState.IdRef="Assign_27">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[dtCSPTransactions.Columns("Date1").ColumnName]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">Date</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="354,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
+                <If Condition="[dtCSPTransactions isNot Nothing]" sap:VirtualizedContainerService.HintSize="671,938" sap2010:WorkflowViewState.IdRef="If_15">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="526,790" sap2010:WorkflowViewState.IdRef="Sequence_62">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:AddDataColumn x:TypeArguments="s:DateTime" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Date1" DataTable="[dtCSPTransactions]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+                      <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtCSPTransactions]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="484,300" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+                        <ui:ForEachRow.Body>
+                          <ActivityAction x:TypeArguments="sd:DataRow">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Object">[row("Date1")]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Object">[DateTime.Parse(row("Date").ToString).ToString("dd/MM/yyyy", New System.Globalization.CultureInfo("en-IE"))]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:ForEachRow.Body>
+                      </ui:ForEachRow>
+                      <ui:RemoveDataColumn Column="{x:Null}" ColumnIndex="{x:Null}" ColumnName="Date" DataTable="[dtCSPTransactions]" DisplayName="Remove Data Column" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="RemoveDataColumn_1" />
+                      <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="484,134" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="SetOrdinal">
+                        <InvokeMethod.TargetObject>
+                          <InArgument x:TypeArguments="sd:DataColumn">[dtCSPTransactions.Columns("Date1")]</InArgument>
+                        </InvokeMethod.TargetObject>
+                        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                      </InvokeMethod>
+                      <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_27">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[dtCSPTransactions.Columns("Date1").ColumnName]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">Date</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                </If>
+                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="671,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="General\TakeScreenshot.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
                     <InArgument x:TypeArguments="x:String" x:Key="in_Folder">ProcessedTransactions_Screenshots</InArgument>
                     <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath" />
@@ -242,12 +253,12 @@
             </TryCatch.Catches>
           </TryCatch>
           <FlowStep.Next>
-            <FlowDecision x:Name="__ReferenceID33" Condition="[out_BusinessException is Nothing And out_SystemException is Nothing]" DisplayName="No exceptions?" sap:VirtualizedContainerService.HintSize="87,87" sap2010:WorkflowViewState.IdRef="FlowDecision_8">
+            <FlowDecision x:Name="__ReferenceID33" Condition="[out_BusinessException is Nothing And out_SystemException is Nothing]" DisplayName="No exceptions?" sap:VirtualizedContainerService.HintSize="86,87" sap2010:WorkflowViewState.IdRef="FlowDecision_8">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <av:Point x:Key="ShapeLocation">730.641666666667,296.5</av:Point>
-                  <av:Size x:Key="ShapeSize">87,87</av:Size>
+                  <av:Size x:Key="ShapeSize">86,87</av:Size>
                   <av:PointCollection x:Key="TrueConnector">730.641666666667,340 640,340 640,436.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
