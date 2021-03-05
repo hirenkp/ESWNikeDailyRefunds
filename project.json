@@ -13,7 +13,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "20.10.2.0",
-  "projectVersion": "1.0.47",
+  "projectVersion": "1.0.49",
   "runtimeOptions": {
     "autoDispose": false,
     "isPausable": true,
@@ -47,14 +47,18 @@
         "Data/Config - Prod.xlsx",
         "Data/Config - UAT (1).xlsx",
         "Data/Config - UAT.xlsx",
-        "Data/Input/PaymentTransactionTypes - Both.xlsx",
-        "Data/Input/PaymentTransactionTypes - Prod.xlsx",
-        "Data/Input/PaymentTransactionTypes - Refund Fins Only.xlsx",
         "Data/Input/PaymentTransactionTypes - UAT.xlsx",
+        "Data/Input/PaymentTransactionTypes - Refund Fins Only.xlsx",
+        "Data/Input/PaymentTransactionTypes - Prod.xlsx",
+        "Data/Input/PaymentTransactionTypes - Both.xlsx",
         "Backups/ProcessRefunds_3.xaml",
         "Backups/ProcessRefunds_4.xaml",
         "Backups/ProcessRefunds - 22022021.xaml",
-        "Backups/ProcessRefunds - 24022021.xaml"
+        "Backups/ProcessRefunds - 24022021.xaml",
+        "Data/Config - Prod 04032021.xlsx",
+        "Data/Config - Prod 22022021.xlsx",
+        "Data/Config - UAT Live CSP.xlsx",
+        "Tests/Test_SearchForFraudulenttransactions.xaml"
       ]
     },
     "fileInfoCollection": [],

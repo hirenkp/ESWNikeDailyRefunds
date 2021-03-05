@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1140,1521</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1043,1521</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FraudList_ExtractRows_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -140,7 +140,7 @@
                 </Assign>
               </If.Else>
             </If>
-            <If Condition="[rowCopyStartIndex = dtFraudList.Rows.Count]" DisplayName="If queried row is the last row then reutrn null DataTable as there a no new rows to add, otherwise extract newly added fraud items" sap:VirtualizedContainerService.HintSize="611,399" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[out_BusinessException isNot Nothing Or rowCopyStartIndex = dtFraudList.Rows.Count]" DisplayName="If queried row is the last row then reutrn null DataTable as there a no new rows to add, otherwise extract newly added fraud items" sap:VirtualizedContainerService.HintSize="611,399" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
                   <Assign.To>

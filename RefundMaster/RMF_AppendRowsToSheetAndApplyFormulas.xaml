@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1027,5331</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1043,5324</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>AppendRowsToSheetInExisitingWorkbook_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="64">
@@ -83,7 +83,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Appends the rows extracted from CSP to the current sheet in the Nike master file" DisplayName="AppendRowsToSheetInExisitingWorkbook" sap:VirtualizedContainerService.HintSize="921,5166" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Appends the rows extracted from CSP to the current sheet in the Nike master file" DisplayName="AppendRowsToSheetInExisitingWorkbook" sap:VirtualizedContainerService.HintSize="921,5159" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:WorkbookApplication" Name="workbook" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtFormulas" />
@@ -129,13 +129,13 @@
         </Assign>
       </If.Else>
     </If>
-    <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope we are using workbook application as reference so need for fill file name property" ExistingWorkbook="[workbook]" sap:VirtualizedContainerService.HintSize="879,4412" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000">
+    <ui:ExcelApplicationScope Password="{x:Null}" WorkbookPath="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope we are using workbook application as reference so need for fill file name property" ExistingWorkbook="[workbook]" sap:VirtualizedContainerService.HintSize="879,4405" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="845,4303" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="845,4296" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="dtTransactions" />
               <Variable x:TypeArguments="x:String" Name="startRange" />
@@ -143,6 +143,7 @@
               <Variable x:TypeArguments="s:String[]" sap2010:Annotation.AnnotationText="This contains the formula data that is stored in Data\Input\PaymentTransactionTypes.xlsx, in the sheet 'Sheet Formulas', Please note that if any of the formulas used in the refund master are changed then they need to also be updated in the PaymentTransactionTypes.xlsx file." Name="arFormulas" />
               <Variable x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="This range consists of the cells that contain the formulas that need to be applied after the newly added rows have been appended " Name="calculationRange" />
               <Variable x:TypeArguments="sd:DataTable" Name="dtRefundDate" />
+              <Variable x:TypeArguments="s:DateTime" Name="dateNow" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -187,8 +188,50 @@
               </sap:WorkflowViewStateService.ViewState>
             </ui:ExcelWriteRange>
             <ui:BuildDataTable DataTable="[dtRefundDate]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="803,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Date&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{DateTime.Parse(Now.ToString).ToString(&quot;dd/MM/yyyy&quot;, New System.Globalization.CultureInfo(&quot;en-IE&quot;))}]" DataTable="[dtRefundDate]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="803,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-            <ui:ExcelWriteRange AddHeaders="False" DataTable="[dtRefundDate]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="803,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="[in_Sheet]" StartingCell="[in_RefundDateColumnTemplate(0) + out_NewlyAddedRowsRange(0).ToString]" />
+            <Assign sap:VirtualizedContainerService.HintSize="803,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:DateTime">[dateNow]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:DateTime">[DateTime.Parse(Now.ToString("dd/MM/yyyy HH:mm:ss"), New System.Globalization.CultureInfo("en-IE"))]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="803,51" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{dateNow}]" DataTable="[dtRefundDate]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="803,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ExcelWriteRange AddHeaders="False" DataTable="[dtRefundDate]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="[in_Sheet]" StartingCell="[in_RefundDateColumnTemplate(0) + out_NewlyAddedRowsRange(0).ToString]" />
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
             <Assign sap2010:Annotation.AnnotationText="Take formula array as strings stored in Data\Input\PaymentTransactionTypes.xlsx and convert them to a string array" sap:VirtualizedContainerService.HintSize="803,132" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="s:String[]">[arFormulas]</OutArgument>
@@ -287,11 +330,10 @@
                 </ActivityAction>
               </ueab:ExcelApplicationCard.Body>
             </ueab:ExcelApplicationCard>
-            <If Condition="[in_CSPData.Rows.Count &gt; 1]" DisplayName="If there is more then one row to append" sap:VirtualizedContainerService.HintSize="803,1441" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[in_CSPData.Rows.Count &gt; 1]" DisplayName="If there is more then one row to append" sap:VirtualizedContainerService.HintSize="803,1341" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="382,1294" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence sap:VirtualizedContainerService.HintSize="382,1194" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <Sequence.Variables>
-                    <Variable x:TypeArguments="s:DateTime" Name="dateNow" />
                     <Variable x:TypeArguments="x:Int32" Name="loopIndex" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
@@ -352,14 +394,6 @@
                       </scg:List>
                     </ui:MultipleAssign.AssignOperations>
                   </ui:MultipleAssign>
-                  <Assign sap:VirtualizedContainerService.HintSize="340,60" sap2010:WorkflowViewState.IdRef="Assign_18">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="s:DateTime">[dateNow]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="s:DateTime">[DateTime.Parse(Now.ToString("MM/dd/yyyy HH:mm:ss"), New System.Globalization.CultureInfo("en-IE"))]</InArgument>
-                    </Assign.Value>
-                  </Assign>
                   <Assign sap:VirtualizedContainerService.HintSize="340,60" sap2010:WorkflowViewState.IdRef="Assign_19">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[loopIndex]</OutArgument>
@@ -368,7 +402,7 @@
                       <InArgument x:TypeArguments="x:Int32">[out_NewlyAddedRowsRange(0)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InterruptibleWhile Condition="[loopIndex &lt;out_NewlyAddedRowsRange(1)]" DisplayName="While" sap:VirtualizedContainerService.HintSize="340,379" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                  <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="340,379" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
                     <ui:InterruptibleWhile.Body>
                       <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,214" sap2010:WorkflowViewState.IdRef="Sequence_24">
                         <sap:WorkflowViewStateService.ViewState>
@@ -387,6 +421,9 @@
                         </Assign>
                       </Sequence>
                     </ui:InterruptibleWhile.Body>
+                    <ui:InterruptibleWhile.Condition>
+                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="loopIndex &lt;= out_NewlyAddedRowsRange(1)" />
+                    </ui:InterruptibleWhile.Condition>
                   </ui:InterruptibleWhile>
                   <ui:ExcelWriteRange AddHeaders="False" DataTable="[dtRefundDate]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="340,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_3" SheetName="[in_Sheet]" StartingCell="[endRange]" />
                 </Sequence>
